@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Need Support? | Starfish Apartments Ayia Napa</title>
+    <meta
+      name="description"
+      content="Contact the Starfish Apartments Ayia Napa team, review common reservation questions, and get support for apartment stays in Cyprus."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://shavadjia.github.io/starfish-reservation-app/support.html" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app support-page">
+      <header class="support-header">
+        <nav class="nav">
+          <a class="brand support-brand" href="./reservation.html">
+            <span class="brand-mark">*</span>
+            <span>Starfish Apartments</span>
+          </a>
+          <a class="back-link" href="./reservation.html">Back to reservations</a>
+        </nav>
+        <section class="section support-hero">
+          <p class="eyebrow">Need support?</p>
+          <h1>How can we help?</h1>
+          <p class="muted">FAQs, WhatsApp, and an AI assistant placeholder are here - separate from the reservation form.</p>
+        </section>
+      </header>
+
+      <main>
+        <section class="section support-section">
+          <div class="support-grid">
+            <a class="support-card" href="https://wa.me/35796699944" target="_blank" rel="noreferrer">
+              <span>WhatsApp</span>
+              <strong>Starfish Team - +357 96699944</strong>
+              <small>Official Starfish Team WhatsApp.</small>
+            </a>
+          </div>
+
+          <div class="faq-ai-grid">
+            <div class="faq-panel">
+              <p class="step-label">FAQs</p>
+              <details open>
+                <summary>What is the minimum stay?</summary>
+                <p>Minimum stay is 3 nights.</p>
+              </details>
+              <details>
+                <summary>How many guests can stay?</summary>
+                <p>Maximum capacity is 6 people in Apartment 5. Other apartments fit 2 or 4 guests depending on the unit.</p>
+              </details>
+              <details>
+                <summary>How do I know if dates are available?</summary>
+                <p>Reserved dates are shown in red on the calendar. Select available dates by dragging across the calendar.</p>
+              </details>
+              <details>
+                <summary>Can I pay online?</summary>
+                <p>Online payment is not available yet. Payment options will be added when the reservation service is ready.</p>
+              </details>
+              <details>
+                <summary>Can I change or cancel my reservation?</summary>
+                <p>Cancellation and change rules will be added once you confirm your policy.</p>
+              </details>
+            </div>
+
+            <div class="ai-panel">
+              <p class="step-label">AI assistant</p>
+              <h3>Problem not in the FAQs?</h3>
+              <p class="muted">Ask here. Later we can connect this box to a real AI model trained on your property rules.</p>
+              <label>
+                <span>Your question</span>
+                <textarea id="aiQuestion" rows="5" placeholder="Example: Can I arrive late at night?"></textarea>
+              </label>
+              <button id="askAiButton" type="button">Ask AI assistant</button>
+              <p id="aiAnswer" class="ai-answer">The AI assistant will answer here.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./support.js"></script>
+  </body>
+</html>

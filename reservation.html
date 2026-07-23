@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Starfish Apartments Ayia Napa Reservations</title>
+    <meta
+      name="description"
+      content="Check Starfish Apartments Ayia Napa apartment options, availability calendars, and direct reservation details for stays in Ayia Napa, Cyprus."
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://shavadjia.github.io/starfish-reservation-app/reservation.html" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app" class="app">
+      <header class="site-header">
+        <nav class="nav">
+          <div class="brand">
+            <span class="brand-mark">*</span>
+            <span>Starfish Apartments</span>
+          </div>
+          <div class="nav-links">
+            <a href="#apartments">Apartments</a>
+            <a href="#reservation">Reservations</a>
+          </div>
+          <div class="language-switcher" aria-label="Language selector">
+            <button type="button" class="language-button active" data-lang="en" aria-label="English">
+              <svg class="flag-svg" viewBox="0 0 60 36" aria-hidden="true">
+                <clipPath id="uk-clip-reservation"><path d="M0 0h60v36H0z"/></clipPath>
+                <g clip-path="url(#uk-clip-reservation)">
+                  <path fill="#012169" d="M0 0h60v36H0z"/>
+                  <path stroke="#fff" stroke-width="7.2" d="m0 0 60 36m0-36L0 36"/>
+                  <path stroke="#C8102E" stroke-width="4.8" d="m0 0 60 36m0-36L0 36"/>
+                  <path stroke="#fff" stroke-width="12" d="M30 0v36M0 18h60"/>
+                  <path stroke="#C8102E" stroke-width="7.2" d="M30 0v36M0 18h60"/>
+                </g>
+              </svg>
+            </button>
+            <button type="button" class="language-button" data-lang="el" aria-label="Greek">
+              <svg class="flag-svg" viewBox="0 0 27 18" aria-hidden="true">
+                <rect fill="#0D5EAF" width="27" height="18"/>
+                <path fill="none" stroke="#fff" stroke-width="2" d="M5 0v10M0 5h10M10 3h17M10 7h17M0 11h27M0 15h27"/>
+              </svg>
+            </button>
+          </div>
+        </nav>
+
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Ayia Napa, Cyprus</p>
+            <h1>Apartment reservations, styled for direct bookings.</h1>
+            <p>
+              Minimum stay is 3 nights.
+            </p>
+          </div>
+
+          <form id="guestStepForm" class="booking-box">
+            <p class="step-label">Step 1</p>
+            <h2>How many guests?</h2>
+            <p class="muted compact-note">Maximum 6 people, not counting infants.</p>
+            <label>
+              <span>Adults</span>
+              <select id="adults">
+                <option>1</option>
+                <option selected>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+              </select>
+            </label>
+            <label>
+              <span>Children</span>
+              <select id="children">
+                <option selected>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </label>
+            <label>
+              <span>Infants</span>
+              <select id="infants">
+                <option selected>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+              </select>
+            </label>
+            <button type="submit">Show apartment options</button>
+            <p id="guestStepMessage" class="form-message"></p>
+          </form>
+        </section>
+      </header>
+
+      <section id="apartments" class="section" hidden>
+        <div class="section-heading">
+          <p class="eyebrow">Step 2 - Apartments</p>
+          <h2>Choose your apartment</h2>
+          <p id="guestSummary">Apartment 5 is intentionally shown separately because it has 2 more bedrooms.</p>
+        </div>
+
+        <div id="apartmentCategories" class="category-list"></div>
+
+        <div id="availabilityPanel" class="availability-panel" hidden>
+          <div class="availability-copy">
+            <p class="eyebrow">Step 3 - Availability</p>
+            <h2 id="availabilityTitle">Select dates</h2>
+            <p class="muted">Red dates are already reserved. Choose an available check-in and check-out below.</p>
+            <div class="calendar-legend">
+              <span><i class="legend-free"></i> Available</span>
+              <span><i class="legend-booked"></i> Reserved</span>
+              <span><i class="legend-range"></i> Your selected stay</span>
+            </div>
+          </div>
+
+          <div id="availabilityCalendar" class="calendar-wrap"></div>
+
+          <form id="searchForm" class="booking-box date-box">
+            <input id="checkIn" type="hidden" required />
+            <input id="checkOut" type="hidden" required />
+            <div class="selected-dates">
+              <span>Selected stay</span>
+              <strong id="dateSummary">Drag across the calendar to select dates</strong>
+            </div>
+            <button type="submit">Continue to guest details</button>
+            <p id="searchMessage" class="form-message"></p>
+          </form>
+        </div>
+      </section>
+
+      <section id="reservation" class="section two-column" hidden>
+        <div>
+          <p class="eyebrow">Step 4 - Guest details</p>
+          <h2>Guest details</h2>
+          <p class="muted">
+            This form appears only after guests, apartment, and available dates are completed.
+          </p>
+        </div>
+
+        <form id="reservationForm" class="panel">
+          <label>
+            <span>Selected apartment</span>
+            <input id="selectedApartment" type="text" readonly placeholder="Select from apartment cards" />
+          </label>
+          <label>
+            <span>Guest name</span>
+            <input id="guestName" type="text" required placeholder="Guest full name" />
+          </label>
+          <label>
+            <span>Email</span>
+            <input id="guestEmail" type="email" placeholder="guest@email.com" />
+          </label>
+          <label>
+            <span>Phone</span>
+            <input id="guestPhone" type="tel" placeholder="+357..." />
+          </label>
+          <label>
+            <span>Total price (EUR)</span>
+            <input id="totalPrice" type="number" min="0" step="0.01" placeholder="0.00" />
+          </label>
+          <label class="wide">
+            <span>Notes</span>
+            <textarea id="bookingNotes" rows="4" placeholder="Arrival time, cleaning notes, special requests..."></textarea>
+          </label>
+          <button type="submit">Confirm reservation</button>
+          <p id="reservationMessage" class="form-message"></p>
+        </form>
+      </section>
+
+      <p class="support-note">
+        <a href="./support.html">FAQs</a>
+      </p>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

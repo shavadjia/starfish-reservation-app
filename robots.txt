@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shavadjia.github.io/starfish-reservation-app/sitemap.xml
