@@ -37,6 +37,58 @@ const translations = {
     totalPrice: "Total price (EUR)",
     notes: "Notes",
     confirmReservation: "Confirm reservation",
+    faq: "FAQs",
+    apartment: "Apartment",
+    flat: "Flat",
+    studio: "Studio",
+    oneBedroom: "One bedroom",
+    twoBedrooms: "Two bedrooms",
+    oneQueenBed: "1 queen bed",
+    doubleQueenSofa: "1 double queen bed + 1 sofa bed",
+    queenTwoSinglesSofa: "1 queen bed + 2 single beds + 1 sofa bed",
+    queenSofa: "1 queen bed + 1 sofa bed",
+    guests: "Guests",
+    minimum: "Minimum",
+    nights: "nights",
+    night: "night",
+    selected: "Selected",
+    viewDates: "View dates",
+    select: "Select",
+    dates: "dates",
+    photoGallery: "photo gallery",
+    photo: "photo",
+    category13: "Apartments 1-3",
+    category4: "Apartment 4",
+    category5: "Apartment 5",
+    category67: "Flats 6-7",
+    category812: "Apartments 8-12",
+    description13: "Studios with 1 double queen bed and 1 sofa bed. Fits up to 4 guests.",
+    description4: "One-bedroom apartment with 1 queen bed. Fits up to 2 guests.",
+    description5: "Two-bedroom apartment with 1 queen bed, 2 single beds, and 1 sofa bed. Fits up to 6 guests.",
+    description67: "Studios with 1 queen bed only. Fits up to 2 guests.",
+    description812: "One-bedroom apartments with 1 queen bed and 1 sofa bed. Fits up to 4 guests.",
+    categoryDoesNotFit: "This category does not fit {count} guests.",
+    chooseDatesForApartment: "Choose dates for this apartment.",
+    selectedDatesSummary: "{start} to {end} · {count} {unit}",
+    reservedDateError: "This date is reserved. Please choose available dates.",
+    selectApartmentFirst: "Please select an apartment first.",
+    selectDatesByDragging: "Please select your dates by dragging across the calendar.",
+    minimumStayError: "Minimum stay is 3 nights. Please choose a longer stay.",
+    maximumGuestsError: "{apartment} fits maximum {count} guests, not counting infants.",
+    noApartmentAvailable: "No available apartment for the chosen dates.",
+    apartmentAvailable: "{apartment} is available for {count} nights. Please enter the guest details.",
+    capacityError: "Maximum available capacity is 6 guests in Apartment 5, not counting infants.",
+    showingCategories: "Showing apartment categories for {guests}{infants}. Each category is shown in a different rectangle.",
+    guestCount: "{count} guest",
+    guestCountPlural: "{count} guests",
+    infantCount: " plus {count} infant",
+    infantCountPlural: " plus {count} infants",
+    searchDatesFirst: "Please search dates first.",
+    selectAvailableApartment: "Please select an available apartment.",
+    reservationConfirmed: "Reservation confirmed for {apartment}.",
+    selectedApartmentPlaceholder: "Select from apartment cards",
+    guestNamePlaceholder: "Guest full name",
+    notesPlaceholder: "Arrival time, cleaning notes, special requests...",
   },
   el: {
     navApartments: "Διαμερίσματα",
@@ -68,41 +120,105 @@ const translations = {
     guestDetailsHelp: "Η φόρμα εμφανίζεται μόνο μετά την επιλογή ατόμων, διαμερίσματος και διαθέσιμων ημερομηνιών.",
     selectedApartment: "Επιλεγμένο διαμέρισμα",
     guestName: "Όνομα επισκέπτη",
-    email: "Email",
+    email: "Ηλεκτρονικό ταχυδρομείο",
     phone: "Τηλέφωνο",
-    totalPrice: "Συνολική τιμή (EUR)",
+    totalPrice: "Συνολική τιμή (Ευρώ)",
     notes: "Σημειώσεις",
     confirmReservation: "Επιβεβαίωση κράτησης",
+    faq: "Συχνές ερωτήσεις",
+    apartment: "Διαμέρισμα",
+    flat: "Διαμέρισμα",
+    studio: "Στούντιο",
+    oneBedroom: "Ένα υπνοδωμάτιο",
+    twoBedrooms: "Δύο υπνοδωμάτια",
+    oneQueenBed: "1 διπλό κρεβάτι",
+    doubleQueenSofa: "1 διπλό κρεβάτι + 1 καναπές-κρεβάτι",
+    queenTwoSinglesSofa: "1 διπλό κρεβάτι + 2 μονά κρεβάτια + 1 καναπές-κρεβάτι",
+    queenSofa: "1 διπλό κρεβάτι + 1 καναπές-κρεβάτι",
+    guests: "Άτομα",
+    minimum: "Ελάχιστο",
+    nights: "νύχτες",
+    night: "νύχτα",
+    selected: "Επιλεγμένο",
+    viewDates: "Προβολή ημερομηνιών",
+    select: "Επιλογή",
+    dates: "ημερομηνίες",
+    photoGallery: "συλλογή φωτογραφιών",
+    photo: "φωτογραφία",
+    category13: "Διαμερίσματα 1-3",
+    category4: "Διαμέρισμα 4",
+    category5: "Διαμέρισμα 5",
+    category67: "Διαμερίσματα 6-7",
+    category812: "Διαμερίσματα 8-12",
+    description13: "Στούντιο με 1 διπλό κρεβάτι και 1 καναπέ-κρεβάτι. Έως 4 άτομα.",
+    description4: "Διαμέρισμα ενός υπνοδωματίου με 1 διπλό κρεβάτι. Έως 2 άτομα.",
+    description5: "Διαμέρισμα δύο υπνοδωματίων με 1 διπλό κρεβάτι, 2 μονά κρεβάτια και 1 καναπέ-κρεβάτι. Έως 6 άτομα.",
+    description67: "Στούντιο με 1 διπλό κρεβάτι. Έως 2 άτομα.",
+    description812: "Διαμερίσματα ενός υπνοδωματίου με 1 διπλό κρεβάτι και 1 καναπέ-κρεβάτι. Έως 4 άτομα.",
+    categoryDoesNotFit: "Αυτή η κατηγορία δεν χωράει {count} άτομα.",
+    chooseDatesForApartment: "Επιλέξτε ημερομηνίες για αυτό το διαμέρισμα.",
+    selectedDatesSummary: "{start} έως {end} · {count} {unit}",
+    reservedDateError: "Αυτή η ημερομηνία είναι κρατημένη. Επιλέξτε διαθέσιμες ημερομηνίες.",
+    selectApartmentFirst: "Επιλέξτε πρώτα ένα διαμέρισμα.",
+    selectDatesByDragging: "Επιλέξτε τις ημερομηνίες σύροντας πάνω στο ημερολόγιο.",
+    minimumStayError: "Η ελάχιστη διαμονή είναι 3 νύχτες. Επιλέξτε μεγαλύτερη διαμονή.",
+    maximumGuestsError: "Το {apartment} φιλοξενεί έως {count} άτομα, χωρίς τα βρέφη.",
+    noApartmentAvailable: "Δεν υπάρχει διαθέσιμο διαμέρισμα για τις επιλεγμένες ημερομηνίες.",
+    apartmentAvailable: "Το {apartment} είναι διαθέσιμο για {count} νύχτες. Συμπληρώστε τα στοιχεία επισκέπτη.",
+    capacityError: "Η μέγιστη διαθέσιμη χωρητικότητα είναι 6 άτομα στο Διαμέρισμα 5, χωρίς τα βρέφη.",
+    showingCategories: "Εμφανίζονται κατηγορίες διαμερισμάτων για {guests}{infants}. Κάθε κατηγορία εμφανίζεται σε ξεχωριστό πλαίσιο.",
+    guestCount: "{count} άτομο",
+    guestCountPlural: "{count} άτομα",
+    infantCount: " και {count} βρέφος",
+    infantCountPlural: " και {count} βρέφη",
+    searchDatesFirst: "Επιλέξτε πρώτα ημερομηνίες.",
+    selectAvailableApartment: "Επιλέξτε ένα διαθέσιμο διαμέρισμα.",
+    reservationConfirmed: "Η κράτηση επιβεβαιώθηκε για το {apartment}.",
+    selectedApartmentPlaceholder: "Επιλέξτε από τα διαμερίσματα",
+    guestNamePlaceholder: "Ονοματεπώνυμο επισκέπτη",
+    notesPlaceholder: "Ώρα άφιξης, σημειώσεις καθαρισμού, ειδικά αιτήματα...",
   },
 };
 
 let currentLanguage = "en";
+let syncedCalendarBlocks = [];
 
 function t(key) {
   return translations[currentLanguage][key] || translations.en[key] || key;
 }
 
+function tr(key, values = {}) {
+  return Object.entries(values).reduce(
+    (text, [name, value]) => text.replaceAll(`{${name}}`, String(value)),
+    t(key),
+  );
+}
+
+function apartmentName(apartment) {
+  return `${t(apartment.nameKey)} ${apartment.id}`;
+}
+
 const apartments = [
-  { id: 1, name: "Apartment 1", category: "Apartments 1-3", type: "Studio", guests: 4, beds: "1 double queen bed + 1 sofa bed", minNights: 3 },
-  { id: 2, name: "Apartment 2", category: "Apartments 1-3", type: "Studio", guests: 4, beds: "1 double queen bed + 1 sofa bed", minNights: 3 },
-  { id: 3, name: "Apartment 3", category: "Apartments 1-3", type: "Studio", guests: 4, beds: "1 double queen bed + 1 sofa bed", minNights: 3 },
-  { id: 4, name: "Apartment 4", category: "Apartment 4", type: "One bedroom", guests: 2, beds: "1 queen bed", minNights: 3 },
-  { id: 5, name: "Apartment 5", category: "Apartment 5", type: "Two bedrooms", guests: 6, beds: "1 queen bed + 2 single beds + 1 sofa bed", minNights: 3 },
-  { id: 6, name: "Flat 6", category: "Flats 6-7", type: "Studio", guests: 2, beds: "1 queen bed", minNights: 3 },
-  { id: 7, name: "Flat 7", category: "Flats 6-7", type: "Studio", guests: 2, beds: "1 queen bed", minNights: 3 },
-  { id: 8, name: "Apartment 8", category: "Apartments 8-12", type: "One bedroom", guests: 4, beds: "1 queen bed + 1 sofa bed", minNights: 3 },
-  { id: 9, name: "Apartment 9", category: "Apartments 8-12", type: "One bedroom", guests: 4, beds: "1 queen bed + 1 sofa bed", minNights: 3 },
-  { id: 10, name: "Apartment 10", category: "Apartments 8-12", type: "One bedroom", guests: 4, beds: "1 queen bed + 1 sofa bed", minNights: 3 },
-  { id: 11, name: "Apartment 11", category: "Apartments 8-12", type: "One bedroom", guests: 4, beds: "1 queen bed + 1 sofa bed", minNights: 3 },
-  { id: 12, name: "Apartment 12", category: "Apartments 8-12", type: "One bedroom", guests: 4, beds: "1 queen bed + 1 sofa bed", minNights: 3 },
+  { id: 1, nameKey: "apartment", categoryKey: "category13", typeKey: "studio", guests: 4, bedsKey: "doubleQueenSofa", minNights: 3 },
+  { id: 2, nameKey: "apartment", categoryKey: "category13", typeKey: "studio", guests: 4, bedsKey: "doubleQueenSofa", minNights: 3 },
+  { id: 3, nameKey: "apartment", categoryKey: "category13", typeKey: "studio", guests: 4, bedsKey: "doubleQueenSofa", minNights: 3 },
+  { id: 4, nameKey: "apartment", categoryKey: "category4", typeKey: "oneBedroom", guests: 2, bedsKey: "oneQueenBed", minNights: 3 },
+  { id: 5, nameKey: "apartment", categoryKey: "category5", typeKey: "twoBedrooms", guests: 6, bedsKey: "queenTwoSinglesSofa", minNights: 3 },
+  { id: 6, nameKey: "flat", categoryKey: "category67", typeKey: "studio", guests: 2, bedsKey: "oneQueenBed", minNights: 3 },
+  { id: 7, nameKey: "flat", categoryKey: "category67", typeKey: "studio", guests: 2, bedsKey: "oneQueenBed", minNights: 3 },
+  { id: 8, nameKey: "apartment", categoryKey: "category812", typeKey: "oneBedroom", guests: 4, bedsKey: "queenSofa", minNights: 3 },
+  { id: 9, nameKey: "apartment", categoryKey: "category812", typeKey: "oneBedroom", guests: 4, bedsKey: "queenSofa", minNights: 3 },
+  { id: 10, nameKey: "apartment", categoryKey: "category812", typeKey: "oneBedroom", guests: 4, bedsKey: "queenSofa", minNights: 3 },
+  { id: 11, nameKey: "apartment", categoryKey: "category812", typeKey: "oneBedroom", guests: 4, bedsKey: "queenSofa", minNights: 3 },
+  { id: 12, nameKey: "apartment", categoryKey: "category812", typeKey: "oneBedroom", guests: 4, bedsKey: "queenSofa", minNights: 3 },
 ];
 
 const categories = [
-  { name: "Apartments 1-3", description: "Studios with 1 double queen bed and 1 sofa bed. Fits up to 4 guests." },
-  { name: "Apartment 4", description: "One-bedroom apartment with 1 queen bed. Fits up to 2 guests." },
-  { name: "Apartment 5", description: "Two-bedroom apartment with 1 queen bed, 2 single beds, and 1 sofa bed. Fits up to 6 guests." },
-  { name: "Flats 6-7", description: "Studios with 1 queen bed only. Fits up to 2 guests." },
-  { name: "Apartments 8-12", description: "One-bedroom apartments with 1 queen bed and 1 sofa bed. Fits up to 4 guests." },
+  { key: "category13", descriptionKey: "description13" },
+  { key: "category4", descriptionKey: "description4" },
+  { key: "category5", descriptionKey: "description5" },
+  { key: "category67", descriptionKey: "description67" },
+  { key: "category812", descriptionKey: "description812" },
 ];
 
 const state = {
@@ -161,7 +277,8 @@ function applyLanguage(language) {
   setText("#apartments .section-heading h2", t("chooseApartment"));
   if (!state.guests) setText("#guestSummary", t("initialGuestSummary"));
   setText(".availability-copy .eyebrow", t("step3"));
-  setText("#availabilityTitle", state.selectedApartmentId ? `${selectedApartment.value} ${language === "el" ? "ημερομηνίες" : "dates"}` : t("selectDates"));
+  const activeApartment = apartments.find((apartment) => apartment.id === state.selectedApartmentId);
+  setText("#availabilityTitle", activeApartment ? `${apartmentName(activeApartment)} ${t("dates")}` : t("selectDates"));
   setText(".availability-copy .muted", t("availabilityHelp"));
   const legendItems = document.querySelectorAll(".calendar-legend span");
   if (legendItems[0]) legendItems[0].lastChild.textContent = ` ${t("available")}`;
@@ -180,6 +297,15 @@ function applyLanguage(language) {
   setLabelText("#totalPrice", t("totalPrice"));
   setLabelText("#bookingNotes", t("notes"));
   setText("#reservationForm button[type='submit']", t("confirmReservation"));
+  setText(".support-note a", t("faq"));
+
+  const selectedApartmentInput = document.querySelector("#selectedApartment");
+  const guestNameInput = document.querySelector("#guestName");
+  const notesInput = document.querySelector("#bookingNotes");
+  if (selectedApartmentInput) selectedApartmentInput.placeholder = t("selectedApartmentPlaceholder");
+  if (guestNameInput) guestNameInput.placeholder = t("guestNamePlaceholder");
+  if (notesInput) notesInput.placeholder = t("notesPlaceholder");
+  if (activeApartment && selectedApartmentInput) selectedApartmentInput.value = apartmentName(activeApartment);
 
   document.querySelectorAll(".language-button").forEach((button) => {
     button.classList.toggle("active", button.dataset.lang === language);
@@ -191,11 +317,37 @@ function getReservations() {
 }
 
 function getExternalCalendarBlocks() {
-  return JSON.parse(localStorage.getItem(EXTERNAL_CALENDAR_STORAGE_KEY) || "[]");
+  const legacyBlocks = JSON.parse(localStorage.getItem(EXTERNAL_CALENDAR_STORAGE_KEY) || "[]");
+  return [...syncedCalendarBlocks, ...legacyBlocks];
 }
 
 function getAllBlockedReservations() {
   return [...getReservations(), ...getExternalCalendarBlocks()];
+}
+
+async function loadExternalCalendarBlocks() {
+  const githubDataUrl = "https://raw.githubusercontent.com/shavadjia/starfish-reservation-app/main/data/external-availability.json";
+  const urls = location.hostname.endsWith("github.io")
+    ? ["./data/external-availability.json", githubDataUrl]
+    : [githubDataUrl, "./data/external-availability.json"];
+
+  for (const url of urls) {
+    try {
+      const response = await fetch(`${url}?v=${Date.now()}`, { cache: "no-store" });
+      if (!response.ok) continue;
+      const data = await response.json();
+      const blocks = Array.isArray(data) ? data : data.blocks;
+      if (!Array.isArray(blocks)) continue;
+      syncedCalendarBlocks = blocks.filter((block) => {
+        return Number.isInteger(block.apartmentId) && block.checkIn && block.checkOut;
+      });
+      renderApartments();
+      renderCalendar();
+      return;
+    } catch {
+      // Try the next published availability source.
+    }
+  }
 }
 
 function saveReservations(reservations) {
@@ -216,7 +368,7 @@ function formatDate(date) {
 }
 
 function displayDate(date) {
-  return new Date(`${date}T00:00:00`).toLocaleDateString("en", {
+  return new Date(`${date}T00:00:00`).toLocaleDateString(currentLanguage === "el" ? "el-GR" : "en-GB", {
     day: "numeric",
     month: "short",
     year: "numeric",
@@ -253,36 +405,38 @@ function apartmentPhotoPaths(apartmentId) {
 
 function renderApartmentCard(apartment) {
   const selected = state.selectedApartmentId === apartment.id;
-  const status = selected ? "Selected" : "View dates";
+  const status = selected ? t("selected") : t("viewDates");
   const photos = apartmentPhotoPaths(apartment.id);
+  const name = apartmentName(apartment);
+  const type = t(apartment.typeKey);
 
   return `
     <article class="apartment-card ${selected ? "selected-card" : ""}">
-      <div class="apartment-gallery" aria-label="${apartment.name} photo gallery">
+      <div class="apartment-gallery" aria-label="${name} ${t("photoGallery")}">
         ${photos
           .map(
             (photo, index) => `
               <img
                 class="apartment-photo ${index === 0 ? "apartment-photo-cover" : ""}"
                 src="${photo}"
-                alt="${apartment.name} photo ${index + 1}"
+                alt="${name} ${t("photo")} ${index + 1}"
                 loading="lazy"
               />
             `,
           )
           .join("")}
-        <span class="apartment-type-badge">${apartment.type}</span>
+        <span class="apartment-type-badge">${type}</span>
       </div>
-      <h3>${apartment.name}</h3>
-      <p>${apartment.beds}</p>
+      <h3>${name}</h3>
+      <p>${t(apartment.bedsKey)}</p>
       <div class="meta">
-        <span class="pill">${apartment.type}</span>
-        <span class="pill">Guests: ${apartment.guests}</span>
-        <span class="pill">Minimum: ${apartment.minNights} nights</span>
+        <span class="pill">${type}</span>
+        <span class="pill">${t("guests")}: ${apartment.guests}</span>
+        <span class="pill">${t("minimum")}: ${apartment.minNights} ${t("nights")}</span>
         <span class="pill">${status}</span>
       </div>
       <button class="select-button" data-apartment-id="${apartment.id}">
-        ${selected ? "Selected" : `Select ${apartment.name}`}
+        ${selected ? t("selected") : `${t("select")} ${name}`}
       </button>
     </article>
   `;
@@ -293,19 +447,19 @@ function renderApartments() {
   apartmentCategories.innerHTML = categories
     .map((category) => {
       const matchingApartments = apartments.filter((apartment) => {
-        return apartment.category === category.name && apartment.guests >= totalGuests;
+        return apartment.categoryKey === category.key && apartment.guests >= totalGuests;
       });
       const cards = matchingApartments.length
         ? matchingApartments.map(renderApartmentCard).join("")
-        : `<p class="muted">${currentLanguage === "el" ? `Αυτή η κατηγορία δεν χωράει ${totalGuests} άτομα.` : `This category does not fit ${totalGuests} guests.`}</p>`;
+        : `<p class="muted">${tr("categoryDoesNotFit", { count: totalGuests })}</p>`;
 
       return `
         <section class="category-box">
           <div class="category-heading">
             <div>
-              <p class="step-label">${category.name}</p>
-              <h3>${category.name}</h3>
-              <p>${category.description}</p>
+              <p class="step-label">${t(category.key)}</p>
+              <h3>${t(category.key)}</h3>
+              <p>${t(category.descriptionKey)}</p>
             </div>
           </div>
           <div class="apartment-grid">${cards}</div>
@@ -322,17 +476,17 @@ function renderApartments() {
       state.search = null;
       state.draftStartDate = null;
       state.draftEndDate = null;
-      selectedApartment.value = apartment.name;
+      selectedApartment.value = apartmentName(apartment);
       document.querySelector("#checkIn").value = "";
       document.querySelector("#checkOut").value = "";
       dateSummary.textContent = t("dragDates");
       apartmentCategories.hidden = true;
       reservationSection.hidden = true;
       reservationMessage.textContent = "";
-      searchMessage.textContent = currentLanguage === "el" ? "Επιλέξτε ημερομηνίες για αυτό το διαμέρισμα." : "Choose dates for this apartment.";
+      searchMessage.textContent = t("chooseDatesForApartment");
       searchMessage.classList.remove("error");
       availabilityPanel.hidden = false;
-      availabilityTitle.textContent = `${apartment.name} ${currentLanguage === "el" ? "ημερομηνίες" : "dates"}`;
+      availabilityTitle.textContent = `${apartmentName(apartment)} ${t("dates")}`;
       renderApartments();
       renderCalendar();
       availabilityPanel.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -374,14 +528,19 @@ function updateSelectedDatesFromDraft() {
   const nights = dateDiffNights(start, checkOut);
   document.querySelector("#checkIn").value = start;
   document.querySelector("#checkOut").value = checkOut;
-  dateSummary.textContent = `${displayDate(start)} to ${displayDate(checkOut)} · ${nights} night${nights === 1 ? "" : "s"}`;
+  dateSummary.textContent = tr("selectedDatesSummary", {
+    start: displayDate(start),
+    end: displayDate(checkOut),
+    count: nights,
+    unit: nights === 1 ? t("night") : t("nights"),
+  });
 }
 
 function handleCalendarSelection(date, mode = "start") {
   if (!state.selectedApartmentId) return;
 
   if (dateIsBooked(state.selectedApartmentId, date)) {
-    searchMessage.textContent = "This date is reserved. Please choose available dates.";
+    searchMessage.textContent = t("reservedDateError");
     searchMessage.classList.add("error");
     return;
   }
@@ -412,7 +571,12 @@ function renderCalendar() {
     .map((monthDate) => {
       const year = monthDate.getFullYear();
       const month = monthDate.getMonth();
-      const monthName = monthDate.toLocaleDateString("en", { month: "long", year: "numeric" });
+      const locale = currentLanguage === "el" ? "el-GR" : "en-GB";
+      const monthName = monthDate.toLocaleDateString(locale, { month: "long", year: "numeric" });
+      const weekdayNames = Array.from({ length: 7 }, (_, index) => {
+        const sunday = new Date(2026, 0, 4 + index);
+        return sunday.toLocaleDateString(locale, { weekday: "short" });
+      });
       const firstDay = new Date(year, month, 1).getDay();
       const daysInMonth = new Date(year, month + 1, 0).getDate();
       const blanks = Array.from({ length: firstDay }, () => `<span class="calendar-day empty"></span>`).join("");
@@ -431,7 +595,7 @@ function renderCalendar() {
         <div class="calendar-month">
           <h3>${monthName}</h3>
           <div class="calendar-weekdays">
-            <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+            ${weekdayNames.map((weekday) => `<span>${weekday}</span>`).join("")}
           </div>
           <div class="calendar-grid">${blanks}${days}</div>
         </div>
@@ -467,7 +631,7 @@ document.addEventListener("touchend", () => {
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
   if (!state.selectedApartmentId) {
-    searchMessage.textContent = "Please select an apartment first.";
+    searchMessage.textContent = t("selectApartmentFirst");
     searchMessage.classList.add("error");
     reservationSection.hidden = true;
     return;
@@ -482,7 +646,7 @@ searchForm.addEventListener("submit", (event) => {
   searchMessage.classList.remove("error");
 
   if (!checkIn || !checkOut) {
-    searchMessage.textContent = "Please select your dates by dragging across the calendar.";
+    searchMessage.textContent = t("selectDatesByDragging");
     searchMessage.classList.add("error");
     reservationSection.hidden = true;
     return;
@@ -490,7 +654,7 @@ searchForm.addEventListener("submit", (event) => {
 
   if (nights < 3) {
     state.search = null;
-    searchMessage.textContent = "Minimum stay is 3 nights. Please choose a longer stay.";
+    searchMessage.textContent = t("minimumStayError");
     searchMessage.classList.add("error");
     renderApartments();
     renderCalendar();
@@ -500,7 +664,10 @@ searchForm.addEventListener("submit", (event) => {
 
   if (totalGuests > apartment.guests) {
     state.search = null;
-    searchMessage.textContent = `${apartment.name} fits maximum ${apartment.guests} guests, not counting infants.`;
+    searchMessage.textContent = tr("maximumGuestsError", {
+      apartment: apartmentName(apartment),
+      count: apartment.guests,
+    });
     searchMessage.classList.add("error");
     renderCalendar();
     reservationSection.hidden = true;
@@ -509,15 +676,18 @@ searchForm.addEventListener("submit", (event) => {
 
   state.search = { checkIn, checkOut, adults, children, infants, totalGuests, nights };
   if (!isAvailable(state.selectedApartmentId)) {
-    searchMessage.textContent = "No available apartment for the chosen dates.";
+    searchMessage.textContent = t("noApartmentAvailable");
     searchMessage.classList.add("error");
     reservationSection.hidden = true;
     renderCalendar();
     return;
   }
 
-  selectedApartment.value = apartment.name;
-  reservationMessage.textContent = `${apartment.name} is available for ${nights} nights. Please enter the guest details.`;
+  selectedApartment.value = apartmentName(apartment);
+  reservationMessage.textContent = tr("apartmentAvailable", {
+    apartment: apartmentName(apartment),
+    count: nights,
+  });
   availabilityPanel.hidden = true;
   reservationSection.hidden = false;
   renderApartments();
@@ -535,13 +705,17 @@ guestStepForm.addEventListener("submit", (event) => {
   guestStepMessage.classList.remove("error");
 
   if (totalGuests > 6) {
-    guestStepMessage.textContent = "Maximum available capacity is 6 guests in Apartment 5, not counting infants.";
+    guestStepMessage.textContent = t("capacityError");
     guestStepMessage.classList.add("error");
     return;
   }
 
   state.guests = { adults, children, infants, totalGuests };
-  guestSummary.textContent = `Showing apartment categories for ${totalGuests} guest${totalGuests === 1 ? "" : "s"}${infants ? ` plus ${infants} infant${infants === 1 ? "" : "s"}` : ""}. Each category is shown in a different rectangle.`;
+  const guestCount = tr(totalGuests === 1 ? "guestCount" : "guestCountPlural", { count: totalGuests });
+  const infantCount = infants
+    ? tr(infants === 1 ? "infantCount" : "infantCountPlural", { count: infants })
+    : "";
+  guestSummary.textContent = tr("showingCategories", { guests: guestCount, infants: infantCount });
   guestStepForm.hidden = true;
   apartmentsSection.hidden = false;
   apartmentCategories.hidden = false;
@@ -556,19 +730,19 @@ reservationForm.addEventListener("submit", (event) => {
   reservationMessage.classList.remove("error");
 
   if (!state.search) {
-    reservationMessage.textContent = "Please search dates first.";
+    reservationMessage.textContent = t("searchDatesFirst");
     reservationMessage.classList.add("error");
     return;
   }
 
   if (!state.selectedApartmentId) {
-    reservationMessage.textContent = "Please select an available apartment.";
+    reservationMessage.textContent = t("selectAvailableApartment");
     reservationMessage.classList.add("error");
     return;
   }
 
   if (!isAvailable(state.selectedApartmentId)) {
-    reservationMessage.textContent = "No available apartment for the chosen dates.";
+    reservationMessage.textContent = t("noApartmentAvailable");
     reservationMessage.classList.add("error");
     renderApartments();
     return;
@@ -578,7 +752,7 @@ reservationForm.addEventListener("submit", (event) => {
   const reservation = {
     id: crypto.randomUUID(),
     apartmentId: apartment.id,
-    apartmentName: apartment.name,
+    apartmentName: `Apartment ${apartment.id}`,
     checkIn: state.search.checkIn,
     checkOut: state.search.checkOut,
     nights: state.search.nights,
@@ -608,7 +782,9 @@ reservationForm.addEventListener("submit", (event) => {
   apartmentCategories.hidden = false;
   availabilityPanel.hidden = true;
   reservationSection.hidden = true;
-  reservationMessage.textContent = `Reservation confirmed for ${reservation.apartmentName}.`;
+  reservationMessage.textContent = tr("reservationConfirmed", {
+    apartment: apartmentName(apartment),
+  });
   renderApartments();
 });
 
@@ -622,3 +798,4 @@ document.querySelectorAll(".language-button").forEach((button) => {
 
 renderApartments();
 applyLanguage("en");
+loadExternalCalendarBlocks();

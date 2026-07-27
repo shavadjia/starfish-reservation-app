@@ -1,0 +1,56 @@
+name: Sync Booking and Airbnb calendars
+
+on:
+  schedule:
+    - cron: "7,37 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      BOOKING_APT_1_ICAL: ${{ secrets.BOOKING_APT_1_ICAL }}
+      AIRBNB_APT_1_ICAL: ${{ secrets.AIRBNB_APT_1_ICAL }}
+      BOOKING_APT_2_ICAL: ${{ secrets.BOOKING_APT_2_ICAL }}
+      AIRBNB_APT_2_ICAL: ${{ secrets.AIRBNB_APT_2_ICAL }}
+      BOOKING_APT_3_ICAL: ${{ secrets.BOOKING_APT_3_ICAL }}
+      AIRBNB_APT_3_ICAL: ${{ secrets.AIRBNB_APT_3_ICAL }}
+      BOOKING_APT_4_ICAL: ${{ secrets.BOOKING_APT_4_ICAL }}
+      AIRBNB_APT_4_ICAL: ${{ secrets.AIRBNB_APT_4_ICAL }}
+      BOOKING_APT_5_ICAL: ${{ secrets.BOOKING_APT_5_ICAL }}
+      AIRBNB_APT_5_ICAL: ${{ secrets.AIRBNB_APT_5_ICAL }}
+      BOOKING_APT_6_ICAL: ${{ secrets.BOOKING_APT_6_ICAL }}
+      AIRBNB_APT_6_ICAL: ${{ secrets.AIRBNB_APT_6_ICAL }}
+      BOOKING_APT_7_ICAL: ${{ secrets.BOOKING_APT_7_ICAL }}
+      AIRBNB_APT_7_ICAL: ${{ secrets.AIRBNB_APT_7_ICAL }}
+      BOOKING_APT_8_ICAL: ${{ secrets.BOOKING_APT_8_ICAL }}
+      AIRBNB_APT_8_ICAL: ${{ secrets.AIRBNB_APT_8_ICAL }}
+      BOOKING_APT_9_ICAL: ${{ secrets.BOOKING_APT_9_ICAL }}
+      AIRBNB_APT_9_ICAL: ${{ secrets.AIRBNB_APT_9_ICAL }}
+      BOOKING_APT_10_ICAL: ${{ secrets.BOOKING_APT_10_ICAL }}
+      AIRBNB_APT_10_ICAL: ${{ secrets.AIRBNB_APT_10_ICAL }}
+      BOOKING_APT_11_ICAL: ${{ secrets.BOOKING_APT_11_ICAL }}
+      AIRBNB_APT_11_ICAL: ${{ secrets.AIRBNB_APT_11_ICAL }}
+      BOOKING_APT_12_ICAL: ${{ secrets.BOOKING_APT_12_ICAL }}
+      AIRBNB_APT_12_ICAL: ${{ secrets.AIRBNB_APT_12_ICAL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Download calendar availability
+        run: node scripts/sync-calendars.mjs
+      - name: Publish changed availability
+        run: |
+          if git diff --quiet -- data/external-availability.json; then
+            echo "Availability has not changed."
+            exit 0
+          fi
+          git config user.name "starfish-calendar-sync"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/external-availability.json
+          git commit -m "Update synchronized availability"
+          git push
