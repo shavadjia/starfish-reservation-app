@@ -339,9 +339,7 @@ function getAllBlockedReservations() {
 
 async function loadExternalCalendarBlocks() {
   const githubDataUrl = "https://raw.githubusercontent.com/shavadjia/starfish-reservation-app/main/data/external-availability.json";
-  const urls = location.hostname.endsWith("github.io")
-    ? ["./data/external-availability.json", githubDataUrl]
-    : [githubDataUrl, "./data/external-availability.json"];
+  const urls = ["./data/external-availability.json", githubDataUrl];
 
   for (const url of urls) {
     try {
