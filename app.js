@@ -89,6 +89,9 @@ const translations = {
     selectedApartmentPlaceholder: "Select from apartment cards",
     guestNamePlaceholder: "Guest full name",
     notesPlaceholder: "Arrival time, cleaning notes, special requests...",
+    backToGuests: "Back to guests",
+    backToApartments: "Back to apartments",
+    backToDates: "Back to dates",
   },
   el: {
     navApartments: "Διαμερίσματα",
@@ -177,6 +180,9 @@ const translations = {
     selectedApartmentPlaceholder: "Επιλέξτε από τα διαμερίσματα",
     guestNamePlaceholder: "Ονοματεπώνυμο επισκέπτη",
     notesPlaceholder: "Ώρα άφιξης, σημειώσεις καθαρισμού, ειδικά αιτήματα...",
+    backToGuests: "Πίσω στα άτομα",
+    backToApartments: "Πίσω στα διαμερίσματα",
+    backToDates: "Πίσω στις ημερομηνίες",
   },
 };
 
@@ -245,6 +251,9 @@ const reservationSection = document.querySelector("#reservation");
 const selectedApartment = document.querySelector("#selectedApartment");
 const reservationForm = document.querySelector("#reservationForm");
 const reservationMessage = document.querySelector("#reservationMessage");
+const backToGuests = document.querySelector("#backToGuests");
+const backToApartments = document.querySelector("#backToApartments");
+const backToDates = document.querySelector("#backToDates");
 
 function setText(selector, text) {
   const element = document.querySelector(selector);
@@ -298,6 +307,9 @@ function applyLanguage(language) {
   setLabelText("#bookingNotes", t("notes"));
   setText("#reservationForm button[type='submit']", t("confirmReservation"));
   setText(".support-note a", t("faq"));
+  setText("#backToGuests", t("backToGuests"));
+  setText("#backToApartments", t("backToApartments"));
+  setText("#backToDates", t("backToDates"));
 
   const selectedApartmentInput = document.querySelector("#selectedApartment");
   const guestNameInput = document.querySelector("#guestName");
@@ -626,6 +638,44 @@ document.addEventListener("mouseup", () => {
 
 document.addEventListener("touchend", () => {
   state.isDraggingDates = false;
+});
+
+backToGuests.addEventListener("click", () => {
+  state.guests = null;
+  state.search = null;
+  state.selectedApartmentId = null;
+  state.draftStartDate = null;
+  state.draftEndDate = null;
+  selectedApartment.value = "";
+  guestStepForm.hidden = false;
+  apartmentsSection.hidden = true;
+  availabilityPanel.hidden = true;
+  reservationSection.hidden = true;
+  guestStepMessage.textContent = "";
+  guestStepForm.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+backToApartments.addEventListener("click", () => {
+  state.search = null;
+  state.selectedApartmentId = null;
+  state.draftStartDate = null;
+  state.draftEndDate = null;
+  selectedApartment.value = "";
+  document.querySelector("#checkIn").value = "";
+  document.querySelector("#checkOut").value = "";
+  dateSummary.textContent = t("dragDates");
+  apartmentCategories.hidden = false;
+  availabilityPanel.hidden = true;
+  reservationSection.hidden = true;
+  renderApartments();
+  apartmentsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+backToDates.addEventListener("click", () => {
+  reservationSection.hidden = true;
+  availabilityPanel.hidden = false;
+  renderCalendar();
+  availabilityPanel.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 searchForm.addEventListener("submit", (event) => {

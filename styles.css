@@ -378,6 +378,25 @@ label span {
   line-height: 1.7;
 }
 
+.step-back-button {
+  width: max-content;
+  margin-top: 18px;
+  border: 1px solid #0c4057;
+  border-radius: 0;
+  padding: 10px 15px;
+  color: #0c4057;
+  background: transparent;
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.step-back-button:hover {
+  color: white;
+  background: #0c4057;
+}
+
 .eyebrow {
   margin: 0 0 12px;
   color: var(--gold);
