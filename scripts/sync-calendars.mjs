@@ -26,7 +26,7 @@ function parseEvents(text, apartmentId, source) {
       continue;
     }
     if (line === "END:VEVENT") {
-      if (event?.start) {
+      if (event?.start && event.status !== "CANCELLED") {
         events.push({
           apartmentId,
           checkIn: event.start,
@@ -45,6 +45,7 @@ function parseEvents(text, apartmentId, source) {
     const value = line.slice(colon + 1);
     if (property === "DTSTART") event.start = dateFromIcs(value);
     if (property === "DTEND") event.end = dateFromIcs(value);
+    if (property === "STATUS") event.status = value.trim().toUpperCase();
   }
 
   return events;
