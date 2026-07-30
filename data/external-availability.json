@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-07-30T20:07:23.281Z",
-  "upstreamSyncedAt": "2026-07-30T20:07:23.256Z",
+  "updatedAt": "2026-07-30T23:43:57.143Z",
+  "upstreamSyncedAt": "2026-07-30T23:43:57.120Z",
   "configuredFeeds": 1,
   "errors": [],
   "blocks": [
@@ -270,6 +270,12 @@
     },
     {
       "apartmentId": 3,
+      "checkIn": "2026-09-05",
+      "checkOut": "2026-09-09",
+      "source": "booking"
+    },
+    {
+      "apartmentId": 3,
       "checkIn": "2026-09-09",
       "checkOut": "2026-09-24",
       "source": "booking"
@@ -524,12 +530,6 @@
       "apartmentId": 5,
       "checkIn": "2027-08-29",
       "checkOut": "2027-09-08",
-      "source": "booking"
-    },
-    {
-      "apartmentId": 6,
-      "checkIn": "2026-07-27",
-      "checkOut": "2026-07-30",
       "source": "booking"
     },
     {
@@ -822,7 +822,7 @@
     },
     {
       "apartmentId": 10,
-      "checkIn": "2026-07-30",
+      "checkIn": "2026-07-31",
       "checkOut": "2026-08-03",
       "source": "airbnb"
     },
@@ -894,33 +894,15 @@
     },
     {
       "apartmentId": 10,
-      "checkIn": "2027-07-30",
-      "checkOut": "2027-07-31",
-      "source": "airbnb"
-    },
-    {
-      "apartmentId": 10,
       "checkIn": "2027-08-09",
       "checkOut": "2027-08-16",
       "source": "booking"
     },
     {
       "apartmentId": 11,
-      "checkIn": "2026-07-27",
-      "checkOut": "2026-07-30",
-      "source": "booking"
-    },
-    {
-      "apartmentId": 11,
-      "checkIn": "2026-07-30",
-      "checkOut": "2026-07-31",
-      "source": "airbnb"
-    },
-    {
-      "apartmentId": 11,
       "checkIn": "2026-07-31",
       "checkOut": "2026-08-01",
-      "source": "booking"
+      "source": "airbnb"
     },
     {
       "apartmentId": 11,
@@ -984,12 +966,6 @@
     },
     {
       "apartmentId": 11,
-      "checkIn": "2027-07-30",
-      "checkOut": "2027-07-31",
-      "source": "airbnb"
-    },
-    {
-      "apartmentId": 11,
       "checkIn": "2027-08-11",
       "checkOut": "2027-08-18",
       "source": "booking"
@@ -1008,8 +984,8 @@
     },
     {
       "apartmentId": 12,
-      "checkIn": "2026-07-30",
-      "checkOut": "2026-07-31",
+      "checkIn": "2026-07-31",
+      "checkOut": "2026-08-01",
       "source": "airbnb"
     },
     {
