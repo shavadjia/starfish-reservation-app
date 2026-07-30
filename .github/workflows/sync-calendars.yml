@@ -12,6 +12,7 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     env:
+      STARFISH_AVAILABILITY_URL: https://starfish-apartments-ayia-napa.s-havadjia.chatgpt.site/data/external-availability.json
       BOOKING_APT_1_ICAL: ${{ secrets.BOOKING_APT_1_ICAL }}
       AIRBNB_APT_1_ICAL: ${{ secrets.AIRBNB_APT_1_ICAL }}
       BOOKING_APT_2_ICAL: ${{ secrets.BOOKING_APT_2_ICAL }}

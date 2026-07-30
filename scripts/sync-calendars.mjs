@@ -92,13 +92,48 @@ for (let apartmentId = 1; apartmentId <= 12; apartmentId += 1) {
   }
 }
 
-if (feeds.length === 0) {
+const upstreamUrl = process.env.STARFISH_AVAILABILITY_URL?.trim();
+
+if (!upstreamUrl && feeds.length === 0) {
   console.log("No inbound Booking.com or Airbnb calendar feeds are configured yet.");
   process.exit(0);
 }
 
 const blocks = [];
 const errors = [];
+let upstreamSyncedAt = null;
+
+if (upstreamUrl) {
+  try {
+    const response = await fetch(upstreamUrl, {
+      headers: { "user-agent": "Starfish-Apartments-GitHub-Mirror/1.0" },
+      signal: AbortSignal.timeout(30_000),
+    });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const payload = await response.json();
+    if (!Array.isArray(payload.blocks)) {
+      throw new Error("The upstream response has no availability blocks");
+    }
+
+    blocks.push(...payload.blocks.map((block) => ({
+      apartmentId: Number(block.apartmentId),
+      checkIn: block.checkIn,
+      checkOut: block.checkOut,
+      source: block.source || "booking",
+    })));
+    upstreamSyncedAt = payload.syncedAt || payload.updatedAt || null;
+    console.log(`Mirrored ${payload.blocks.length} privacy-safe availability blocks.`);
+  } catch (error) {
+    errors.push({
+      platform: "upstream",
+      message: error instanceof Error ? error.message : String(error),
+    });
+    const directSources = new Set(feeds.map((feed) => feed.source));
+    blocks.push(...(previous.blocks || []).filter((block) => !directSources.has(block.source)));
+    console.error("Could not update the secure availability mirror; previous data was kept.");
+  }
+}
 
 for (const feed of feeds) {
   try {
@@ -125,7 +160,8 @@ await writeFile(
   outputPath,
   `${JSON.stringify({
     updatedAt: new Date().toISOString(),
-    configuredFeeds: feeds.length,
+    upstreamSyncedAt,
+    configuredFeeds: feeds.length + (upstreamUrl ? 1 : 0),
     errors,
     blocks: dedupe(blocks),
   }, null, 2)}\n`,
