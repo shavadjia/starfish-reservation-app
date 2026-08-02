@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-02T15:47:50.309Z",
-  "upstreamSyncedAt": "2026-08-02T15:47:50.285Z",
+  "updatedAt": "2026-08-02T20:15:57.373Z",
+  "upstreamSyncedAt": "2026-08-02T20:15:57.350Z",
   "configuredFeeds": 1,
   "errors": [],
   "blocks": [
@@ -157,7 +157,7 @@
     {
       "apartmentId": 2,
       "checkIn": "2026-08-05",
-      "checkOut": "2026-08-10",
+      "checkOut": "2026-08-09",
       "source": "booking"
     },
     {
