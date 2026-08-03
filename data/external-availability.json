@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-02T23:45:26.540Z",
-  "upstreamSyncedAt": "2026-08-02T23:45:26.521Z",
+  "updatedAt": "2026-08-03T12:41:05.269Z",
+  "upstreamSyncedAt": "2026-08-03T12:41:05.240Z",
   "configuredFeeds": 1,
   "errors": [],
   "blocks": [
@@ -228,6 +228,12 @@
     },
     {
       "apartmentId": 3,
+      "checkIn": "2026-08-04",
+      "checkOut": "2026-08-06",
+      "source": "booking"
+    },
+    {
+      "apartmentId": 3,
       "checkIn": "2026-08-07",
       "checkOut": "2026-08-14",
       "source": "booking"
@@ -294,7 +300,7 @@
     },
     {
       "apartmentId": 4,
-      "checkIn": "2026-07-31",
+      "checkIn": "2026-08-01",
       "checkOut": "2026-08-03",
       "source": "airbnb"
     },
@@ -338,12 +344,6 @@
       "apartmentId": 4,
       "checkIn": "2026-09-10",
       "checkOut": "2026-09-15",
-      "source": "booking"
-    },
-    {
-      "apartmentId": 4,
-      "checkIn": "2026-09-20",
-      "checkOut": "2026-09-24",
       "source": "booking"
     },
     {
@@ -786,7 +786,7 @@
     },
     {
       "apartmentId": 10,
-      "checkIn": "2026-07-31",
+      "checkIn": "2026-08-01",
       "checkOut": "2026-08-04",
       "source": "airbnb"
     },
@@ -855,6 +855,12 @@
       "checkIn": "2026-09-12",
       "checkOut": "2026-09-19",
       "source": "booking"
+    },
+    {
+      "apartmentId": 10,
+      "checkIn": "2027-08-03",
+      "checkOut": "2027-08-04",
+      "source": "airbnb"
     },
     {
       "apartmentId": 10,
@@ -930,6 +936,12 @@
     },
     {
       "apartmentId": 11,
+      "checkIn": "2027-08-03",
+      "checkOut": "2027-08-04",
+      "source": "airbnb"
+    },
+    {
+      "apartmentId": 11,
       "checkIn": "2027-08-11",
       "checkOut": "2027-08-18",
       "source": "booking"
@@ -956,12 +968,6 @@
       "apartmentId": 12,
       "checkIn": "2026-08-04",
       "checkOut": "2026-08-07",
-      "source": "booking"
-    },
-    {
-      "apartmentId": 12,
-      "checkIn": "2026-08-07",
-      "checkOut": "2026-08-08",
       "source": "booking"
     },
     {
