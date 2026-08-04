@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-03T22:38:08.819Z",
-  "upstreamSyncedAt": "2026-08-03T22:38:08.794Z",
+  "updatedAt": "2026-08-04T08:08:56.037Z",
+  "upstreamSyncedAt": "2026-08-04T08:08:56.011Z",
   "configuredFeeds": 1,
   "errors": [],
   "blocks": [
@@ -122,12 +122,6 @@
       "apartmentId": 1,
       "checkIn": "2027-07-18",
       "checkOut": "2027-07-25",
-      "source": "booking"
-    },
-    {
-      "apartmentId": 1,
-      "checkIn": "2027-07-29",
-      "checkOut": "2027-08-01",
       "source": "booking"
     },
     {
@@ -294,7 +288,7 @@
     },
     {
       "apartmentId": 4,
-      "checkIn": "2026-08-01",
+      "checkIn": "2026-08-02",
       "checkOut": "2026-08-03",
       "source": "airbnb"
     },
@@ -308,6 +302,12 @@
       "apartmentId": 4,
       "checkIn": "2026-08-04",
       "checkOut": "2026-08-11",
+      "source": "booking"
+    },
+    {
+      "apartmentId": 4,
+      "checkIn": "2026-08-11",
+      "checkOut": "2026-08-13",
       "source": "booking"
     },
     {
@@ -756,12 +756,6 @@
     },
     {
       "apartmentId": 9,
-      "checkIn": "2026-08-21",
-      "checkOut": "2026-08-23",
-      "source": "booking"
-    },
-    {
-      "apartmentId": 9,
       "checkIn": "2026-09-19",
       "checkOut": "2026-10-01",
       "source": "booking"
@@ -780,7 +774,7 @@
     },
     {
       "apartmentId": 10,
-      "checkIn": "2026-08-01",
+      "checkIn": "2026-08-02",
       "checkOut": "2026-08-03",
       "source": "airbnb"
     },
@@ -843,6 +837,12 @@
       "checkIn": "2026-09-12",
       "checkOut": "2026-09-19",
       "source": "booking"
+    },
+    {
+      "apartmentId": 10,
+      "checkIn": "2027-08-04",
+      "checkOut": "2027-08-05",
+      "source": "airbnb"
     },
     {
       "apartmentId": 10,
@@ -915,6 +915,12 @@
       "checkIn": "2027-07-10",
       "checkOut": "2027-07-11",
       "source": "booking"
+    },
+    {
+      "apartmentId": 11,
+      "checkIn": "2027-08-04",
+      "checkOut": "2027-08-05",
+      "source": "airbnb"
     },
     {
       "apartmentId": 11,
