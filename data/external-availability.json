@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-08-18T20:50:30.431Z",
-  "upstreamSyncedAt": "2026-08-18T20:50:30.410Z",
+  "updatedAt": "2026-08-18T21:50:40.263Z",
+  "upstreamSyncedAt": "2026-08-18T21:50:40.042Z",
   "configuredFeeds": 1,
   "errors": [],
   "blocks": [
@@ -516,15 +516,15 @@
     },
     {
       "apartmentId": 8,
-      "checkIn": "2026-08-18",
-      "checkOut": "2026-08-19",
-      "source": "airbnb"
+      "checkIn": "2026-08-19",
+      "checkOut": "2026-08-24",
+      "source": "booking"
     },
     {
       "apartmentId": 8,
       "checkIn": "2026-08-19",
-      "checkOut": "2026-08-24",
-      "source": "booking"
+      "checkOut": "2026-08-20",
+      "source": "airbnb"
     },
     {
       "apartmentId": 8,
@@ -678,7 +678,7 @@
     },
     {
       "apartmentId": 10,
-      "checkIn": "2026-08-18",
+      "checkIn": "2026-08-19",
       "checkOut": "2026-08-24",
       "source": "airbnb"
     },
@@ -699,12 +699,6 @@
       "checkIn": "2027-08-09",
       "checkOut": "2027-08-16",
       "source": "booking"
-    },
-    {
-      "apartmentId": 10,
-      "checkIn": "2027-08-18",
-      "checkOut": "2027-08-19",
-      "source": "airbnb"
     },
     {
       "apartmentId": 11,
@@ -761,12 +755,6 @@
       "source": "booking"
     },
     {
-      "apartmentId": 11,
-      "checkIn": "2027-08-18",
-      "checkOut": "2027-08-19",
-      "source": "airbnb"
-    },
-    {
       "apartmentId": 12,
       "checkIn": "2026-08-16",
       "checkOut": "2026-08-18",
@@ -780,8 +768,8 @@
     },
     {
       "apartmentId": 12,
-      "checkIn": "2026-08-18",
-      "checkOut": "2026-08-19",
+      "checkIn": "2026-08-19",
+      "checkOut": "2026-08-20",
       "source": "airbnb"
     },
     {
