@@ -244,6 +244,26 @@ label textarea {
   align-items: center;
 }
 
+.nav-logo {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  margin-right: 4px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 24px rgba(7, 29, 58, 0.22);
+  overflow: hidden;
+}
+
+.nav-logo img {
+  display: block;
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
 .language-button {
   display: grid;
   width: 42px;
