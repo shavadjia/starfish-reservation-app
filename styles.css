@@ -747,6 +747,22 @@ body {
   background: #fbf7ef;
 }
 
+body.pricing-check #app {
+  visibility: hidden;
+}
+
+.calendar-day {
+  align-content: center;
+  gap: 1px;
+  line-height: 1;
+}
+
+.calendar-day small {
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
 .site-header {
   background:
     linear-gradient(90deg, rgba(11, 37, 50, 0.93), rgba(11, 37, 50, 0.5)),

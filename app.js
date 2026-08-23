@@ -92,6 +92,8 @@ const translations = {
     backToGuests: "Back to guests",
     backToApartments: "Back to apartments",
     backToDates: "Back to dates",
+    pricingUnavailable: "Live prices are temporarily unavailable.",
+    reservationsOpeningSoon: "Online reservations opening soon",
   },
   el: {
     navApartments: "Διαμερίσματα",
@@ -183,11 +185,16 @@ const translations = {
     backToGuests: "Πίσω στα άτομα",
     backToApartments: "Πίσω στα διαμερίσματα",
     backToDates: "Πίσω στις ημερομηνίες",
+    pricingUnavailable: "Οι ζωντανές τιμές είναι προσωρινά μη διαθέσιμες.",
+    reservationsOpeningSoon: "Οι ηλεκτρονικές κρατήσεις θα ανοίξουν σύντομα",
   },
 };
 
 let currentLanguage = "en";
 let syncedCalendarBlocks = [];
+let nightlyRates = new Map();
+let pricingReady = false;
+let reservationsEnabled = false;
 
 function t(key) {
   return translations[currentLanguage][key] || translations.en[key] || key;
@@ -306,6 +313,9 @@ function applyLanguage(language) {
   setLabelText("#totalPrice", t("totalPrice"));
   setLabelText("#bookingNotes", t("notes"));
   setText("#reservationForm button[type='submit']", t("confirmReservation"));
+  if (pricingReady && !reservationsEnabled) {
+    setText("#reservationForm button[type='submit']", t("reservationsOpeningSoon"));
+  }
   setText(".support-note a", t("faq"));
   setText("#backToGuests", t("backToGuests"));
   setText("#backToApartments", t("backToApartments"));
@@ -335,6 +345,76 @@ function getExternalCalendarBlocks() {
 
 function getAllBlockedReservations() {
   return [...getReservations(), ...getExternalCalendarBlocks()];
+}
+
+function rateKey(apartmentId, date) {
+  return `${apartmentId}:${date}`;
+}
+
+function nightlyRateFor(apartmentId, date) {
+  return nightlyRates.get(rateKey(apartmentId, date)) || null;
+}
+
+function directStayTotal(apartmentId, checkIn, checkOut) {
+  let cursor = checkIn;
+  let total = 0;
+  while (cursor < checkOut) {
+    const rate = nightlyRateFor(apartmentId, cursor);
+    if (!rate?.available || !Number.isFinite(rate.directRate)) return null;
+    total += rate.directRate;
+    cursor = addOneDay(cursor);
+  }
+  return Number(total.toFixed(2));
+}
+
+function goToUnderConstruction() {
+  const target = new URL("./", window.location.href);
+  target.searchParams.set("maintenance", "pricing");
+  window.location.replace(target.href);
+}
+
+async function loadNightlyRates() {
+  const secureSource = "https://starfish-apartments-ayia-napa.s-havadjia.chatgpt.site/data/nightly-rates.json";
+  const urls = [secureSource, "./data/nightly-rates.json"];
+
+  for (const url of urls) {
+    try {
+      const response = await fetch(`${url}?v=${Date.now()}`, { cache: "no-store" });
+      if (!response.ok) continue;
+      const payload = await response.json();
+      const syncedAt = Date.parse(payload.syncedAt);
+      const fresh = Number.isFinite(syncedAt) && Date.now() - syncedAt < 45 * 60 * 1000;
+      if (payload.status !== "ready" || payload.currency !== "EUR" || !fresh || !Array.isArray(payload.rates)) continue;
+
+      const parsed = new Map();
+      for (const rate of payload.rates) {
+        if (!Number.isInteger(rate.apartmentId) || !rate.date) continue;
+        parsed.set(rateKey(rate.apartmentId, rate.date), {
+          available: rate.available === true,
+          bookingRate: Number(rate.bookingRate),
+          directRate: Number(rate.directRate),
+        });
+      }
+      if (parsed.size < 12 * 60) continue;
+
+      nightlyRates = parsed;
+      pricingReady = true;
+      reservationsEnabled = payload.reservationsEnabled === true;
+      const confirmationButton = reservationForm.querySelector("button[type='submit']");
+      if (confirmationButton && !reservationsEnabled) {
+        confirmationButton.disabled = true;
+        confirmationButton.textContent = t("reservationsOpeningSoon");
+      }
+      document.body.classList.remove("pricing-check");
+      renderCalendar();
+      return true;
+    } catch {
+      // Try the local published fail-safe before closing the reservation page.
+    }
+  }
+
+  goToUnderConstruction();
+  return false;
 }
 
 async function loadExternalCalendarBlocks() {
@@ -505,6 +585,8 @@ function renderApartments() {
 }
 
 function dateIsBooked(apartmentId, date) {
+  const rate = nightlyRateFor(apartmentId, date);
+  if (pricingReady && (!rate || !rate.available)) return true;
   return getAllBlockedReservations().some((reservation) => {
     return (
       reservation.apartmentId === apartmentId &&
@@ -592,11 +674,13 @@ function renderCalendar() {
       const blanks = Array.from({ length: firstDay }, () => `<span class="calendar-day empty"></span>`).join("");
       const days = Array.from({ length: daysInMonth }, (_, index) => {
         const date = formatDate(new Date(year, month, index + 1));
+        const nightlyRate = nightlyRateFor(state.selectedApartmentId, date);
         const booked = dateIsBooked(state.selectedApartmentId, date);
         const inRange = dateInSelectedRange(date);
         return `
           <button type="button" class="calendar-day ${booked ? "booked" : ""} ${inRange ? "selected-range" : ""}" data-date="${date}">
-            ${index + 1}
+            <span>${index + 1}</span>
+            ${!booked && nightlyRate ? `<small>€${nightlyRate.directRate.toFixed(0)}</small>` : ""}
           </button>
         `;
       }).join("");
@@ -731,6 +815,14 @@ searchForm.addEventListener("submit", (event) => {
     return;
   }
 
+  const stayTotal = directStayTotal(state.selectedApartmentId, checkIn, checkOut);
+  if (!pricingReady || stayTotal === null) {
+    goToUnderConstruction();
+    return;
+  }
+
+  document.querySelector("#totalPrice").value = stayTotal.toFixed(2);
+
   selectedApartment.value = apartmentName(apartment);
   reservationMessage.textContent = tr("apartmentAvailable", {
     apartment: apartmentName(apartment),
@@ -776,6 +868,12 @@ guestStepForm.addEventListener("submit", (event) => {
 reservationForm.addEventListener("submit", (event) => {
   event.preventDefault();
   reservationMessage.classList.remove("error");
+
+  if (!reservationsEnabled) {
+    reservationMessage.textContent = t("reservationsOpeningSoon");
+    reservationMessage.classList.add("error");
+    return;
+  }
 
   if (!state.search) {
     reservationMessage.textContent = t("searchDatesFirst");
@@ -847,3 +945,4 @@ document.querySelectorAll(".language-button").forEach((button) => {
 renderApartments();
 applyLanguage("en");
 loadExternalCalendarBlocks();
+loadNightlyRates();

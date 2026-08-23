@@ -1,0 +1,9 @@
+{
+  "status": "maintenance",
+  "reason": "secure-pricing-source-not-connected",
+  "currency": "EUR",
+  "discountPerNight": 10,
+  "reservationsEnabled": false,
+  "syncedAt": null,
+  "rates": []
+}
