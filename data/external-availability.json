@@ -1,7 +1,69 @@
 {
-  "updatedAt": "2026-08-23T11:59:20.006Z",
-  "upstreamSyncedAt": "2026-08-23T11:59:19.982Z",
+  "status": "ready",
+  "updatedAt": "2026-08-23T12:57:21.742Z",
+  "upstreamSyncedAt": "2026-08-23T12:57:21.719Z",
   "configuredFeeds": 1,
+  "expectedCalendars": 24,
+  "calendarHealth": {
+    "status": "healthy",
+    "checkedAt": "2026-08-23T12:57:21.719Z",
+    "totalCalendars": 24,
+    "connectedCalendars": 24,
+    "criticalProblems": [],
+    "warnings": [
+      {
+        "apartmentId": 1,
+        "platform": "booking",
+        "code": "same-platform-overlap",
+        "overlapCount": 6,
+        "note": "This may be an imported block or a duplicate event; review it as a possible conflict."
+      },
+      {
+        "apartmentId": 3,
+        "platform": "booking",
+        "code": "same-platform-overlap",
+        "overlapCount": 1,
+        "note": "This may be an imported block or a duplicate event; review it as a possible conflict."
+      },
+      {
+        "apartmentId": 8,
+        "platform": "booking",
+        "code": "same-platform-overlap",
+        "overlapCount": 1,
+        "note": "This may be an imported block or a duplicate event; review it as a possible conflict."
+      },
+      {
+        "apartmentId": 1,
+        "code": "cross-platform-overlap",
+        "overlapCount": 3,
+        "note": "This can be normal when platforms import each other; it is reported for review."
+      },
+      {
+        "apartmentId": 7,
+        "code": "cross-platform-overlap",
+        "overlapCount": 1,
+        "note": "This can be normal when platforms import each other; it is reported for review."
+      },
+      {
+        "apartmentId": 8,
+        "code": "cross-platform-overlap",
+        "overlapCount": 1,
+        "note": "This can be normal when platforms import each other; it is reported for review."
+      },
+      {
+        "apartmentId": 11,
+        "code": "cross-platform-overlap",
+        "overlapCount": 1,
+        "note": "This can be normal when platforms import each other; it is reported for review."
+      },
+      {
+        "apartmentId": 12,
+        "code": "cross-platform-overlap",
+        "overlapCount": 1,
+        "note": "This can be normal when platforms import each other; it is reported for review."
+      }
+    ]
+  },
   "errors": [],
   "blocks": [
     {
@@ -344,12 +406,6 @@
       "apartmentId": 5,
       "checkIn": "2026-11-18",
       "checkOut": "2026-11-22",
-      "source": "booking"
-    },
-    {
-      "apartmentId": 5,
-      "checkIn": "2027-02-10",
-      "checkOut": "2027-02-13",
       "source": "booking"
     },
     {
