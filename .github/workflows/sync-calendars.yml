@@ -43,8 +43,10 @@ jobs:
         with:
           node-version: "22"
       - name: Download calendar availability
+        id: calendar_sync
         run: node scripts/sync-calendars.mjs
       - name: Publish changed availability
+        if: ${{ steps.calendar_sync.outcome == 'success' }}
         run: |
           if git diff --quiet -- data/external-availability.json; then
             echo "Availability has not changed."
@@ -55,3 +57,8 @@ jobs:
           git add data/external-availability.json
           git commit -m "Update synchronized availability"
           git push
+      - name: Alert on calendar health problems
+        if: ${{ always() }}
+        env:
+          CALENDAR_SYNC_OUTCOME: ${{ steps.calendar_sync.outcome }}
+        run: node scripts/assert-calendar-health.mjs
