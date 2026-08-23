@@ -1226,10 +1226,24 @@ body.reservation-page {
 }
 
 .reservation-page .site-header {
+  color: #071d3a;
   background:
-    linear-gradient(90deg, rgba(7, 29, 58, 0.97), rgba(7, 29, 58, 0.72)),
-    radial-gradient(circle at 82% 18%, rgba(218, 171, 73, 0.56), transparent 24%),
-    linear-gradient(135deg, #071d3a, #294969);
+    radial-gradient(circle at 82% 18%, rgba(184, 149, 91, 0.42), transparent 26%),
+    linear-gradient(115deg, rgba(255, 253, 248, 0.98), rgba(229, 212, 184, 0.9)),
+    linear-gradient(135deg, #fbf6ed, #c9ad82);
+}
+
+.reservation-page .nav {
+  border-bottom-color: rgba(7, 29, 58, 0.24);
+}
+
+.reservation-page .brand,
+.reservation-page .nav-links a {
+  color: #071d3a;
+}
+
+.reservation-page .hero-copy p:not(.eyebrow) {
+  color: rgba(7, 29, 58, 0.78);
 }
 
 .reservation-page .booking-box,
