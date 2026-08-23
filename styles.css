@@ -1228,7 +1228,7 @@ body.reservation-page {
 .reservation-page .site-header {
   color: #071d3a;
   background:
-    linear-gradient(90deg, #173a5e 0 14px, transparent 14px calc(100% - 14px), #173a5e calc(100% - 14px) 100%),
+    linear-gradient(90deg, #b7893f 0 14px, transparent 14px calc(100% - 14px), #b7893f calc(100% - 14px) 100%),
     radial-gradient(circle at 82% 16%, rgba(255, 248, 231, 0.58), transparent 24%),
     linear-gradient(112deg, rgba(248, 237, 217, 0.98) 0%, rgba(219, 190, 146, 0.96) 52%, rgba(174, 132, 76, 0.94) 100%),
     linear-gradient(135deg, #f4e5cd, #b1844e);
