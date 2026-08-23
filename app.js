@@ -96,6 +96,8 @@ const translations = {
     backToDates: "Back to dates",
     pricingUnavailable: "Live prices are temporarily unavailable.",
     reservationsOpeningSoon: "Online reservations opening soon",
+    previewNotice: "Preview only — bookings are disabled while the website is under construction.",
+    previewPriceUnavailable: "Preview only. Live price and booking are disabled.",
   },
   el: {
     navApartments: "Διαμερίσματα",
@@ -191,6 +193,8 @@ const translations = {
     backToDates: "Πίσω στις ημερομηνίες",
     pricingUnavailable: "Οι ζωντανές τιμές είναι προσωρινά μη διαθέσιμες.",
     reservationsOpeningSoon: "Οι ηλεκτρονικές κρατήσεις θα ανοίξουν σύντομα",
+    previewNotice: "Μόνο προεπισκόπηση — οι κρατήσεις είναι απενεργοποιημένες όσο η ιστοσελίδα είναι υπό κατασκευή.",
+    previewPriceUnavailable: "Μόνο προεπισκόπηση. Η ζωντανή τιμή και η κράτηση είναι απενεργοποιημένες.",
   },
 };
 
@@ -201,6 +205,7 @@ let pricingReady = false;
 let calendarHealthReady = false;
 let reservationsEnabled = false;
 const safetyRecheckMs = 5 * 60 * 1000;
+const previewMode = new URLSearchParams(window.location.search).get("preview") === "1";
 
 function t(key) {
   return translations[currentLanguage][key] || translations.en[key] || key;
@@ -319,9 +324,10 @@ function applyLanguage(language) {
   setLabelText("#totalPrice", t("totalPrice"));
   setLabelText("#bookingNotes", t("notes"));
   setText("#reservationForm button[type='submit']", t("confirmReservation"));
-  if (pricingReady && !reservationsEnabled) {
+  if ((pricingReady && !reservationsEnabled) || previewMode) {
     setText("#reservationForm button[type='submit']", t("reservationsOpeningSoon"));
   }
+  setText("#previewNotice", t("previewNotice"));
   setText(".support-note a", t("faq"));
   setText("#backToGuests", t("backToGuests"));
   setText("#backToApartments", t("backToApartments"));
@@ -374,14 +380,25 @@ function directStayTotal(apartmentId, checkIn, checkOut) {
 }
 
 function goToUnderConstruction(reason = "safety") {
+  if (previewMode) {
+    revealReservationIfSafe();
+    return;
+  }
   const target = new URL("./", window.location.href);
   target.searchParams.set("maintenance", reason);
   window.location.replace(target.href);
 }
 
 function revealReservationIfSafe() {
-  if (pricingReady && calendarHealthReady) {
+  if (previewMode || (pricingReady && calendarHealthReady)) {
     document.body.classList.remove("pricing-check");
+    const previewNotice = document.querySelector("#previewNotice");
+    if (previewNotice) previewNotice.hidden = !previewMode;
+    if (previewMode) {
+      const confirmationButton = reservationForm.querySelector("button[type='submit']");
+      confirmationButton.disabled = true;
+      confirmationButton.textContent = t("reservationsOpeningSoon");
+    }
   }
 }
 
@@ -849,17 +866,21 @@ searchForm.addEventListener("submit", (event) => {
 
   const stayTotal = directStayTotal(state.selectedApartmentId, checkIn, checkOut);
   if (!pricingReady || stayTotal === null) {
-    goToUnderConstruction();
-    return;
+    if (!previewMode) {
+      goToUnderConstruction();
+      return;
+    }
   }
 
-  document.querySelector("#totalPrice").value = stayTotal.toFixed(2);
+  document.querySelector("#totalPrice").value = pricingReady && stayTotal !== null ? stayTotal.toFixed(2) : "";
 
   selectedApartment.value = apartmentName(apartment);
-  reservationMessage.textContent = tr("apartmentAvailable", {
-    apartment: apartmentName(apartment),
-    count: nights,
-  });
+  reservationMessage.textContent = previewMode && (!pricingReady || stayTotal === null)
+    ? t("previewPriceUnavailable")
+    : tr("apartmentAvailable", {
+      apartment: apartmentName(apartment),
+      count: nights,
+    });
   availabilityPanel.hidden = true;
   reservationSection.hidden = false;
   renderApartments();

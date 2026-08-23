@@ -756,6 +756,21 @@ body.pricing-check #app {
   visibility: hidden;
 }
 
+.preview-notice {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin: 0;
+  padding: 11px 18px;
+  color: #071d3a;
+  background: #dabb79;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .calendar-day {
   align-content: center;
   gap: 1px;
