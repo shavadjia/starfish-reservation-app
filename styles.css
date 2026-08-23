@@ -469,6 +469,11 @@ label span {
   line-height: 1.55;
 }
 
+.apartment-card .apartment-capacity {
+  color: var(--sea-dark);
+  font-weight: 900;
+}
+
 .meta {
   display: flex;
   flex-wrap: wrap;
@@ -1162,6 +1167,91 @@ body.pricing-check #app {
   border-left: 3px solid var(--gold);
   padding: 12px 14px;
   background: #fbf7ef;
+}
+
+/* Reservation palette matched to the Under Construction page */
+body.reservation-page {
+  --ink: #071d3a;
+  --muted: #5f6670;
+  --sea: #173a5e;
+  --sea-dark: #071d3a;
+  --sand: #d8c7ac;
+  --gold: #b8955b;
+  --cream: #f5efe4;
+  --line: #e2d7c7;
+  --shadow: 0 22px 70px rgba(11, 35, 66, 0.16);
+  color: #071d3a;
+  background:
+    radial-gradient(circle at 50% 16%, rgba(218, 171, 73, 0.16), transparent 24%),
+    linear-gradient(90deg, #d8c7ac 0%, #f5efe4 50%, #d8c7ac 100%);
+}
+
+.reservation-page .site-header {
+  background:
+    linear-gradient(90deg, rgba(7, 29, 58, 0.97), rgba(7, 29, 58, 0.72)),
+    radial-gradient(circle at 82% 18%, rgba(218, 171, 73, 0.56), transparent 24%),
+    linear-gradient(135deg, #071d3a, #294969);
+}
+
+.reservation-page .booking-box,
+.reservation-page .panel,
+.reservation-page .apartment-card,
+.reservation-page .category-box,
+.reservation-page .availability-panel,
+.reservation-page .calendar-month,
+.reservation-page .selected-dates {
+  border-color: #e2d7c7;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 22px 70px rgba(11, 35, 66, 0.14);
+}
+
+.reservation-page .category-box {
+  border-color: rgba(184, 149, 91, 0.62);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(244, 235, 220, 0.94));
+}
+
+.reservation-page .booking-box button,
+.reservation-page .panel button {
+  background: #b8955b;
+}
+
+.reservation-page .select-button,
+.reservation-page .support-note,
+.reservation-page .step-back-button:hover {
+  background: #071d3a;
+}
+
+.reservation-page .step-back-button {
+  border-color: #071d3a;
+  color: #071d3a;
+}
+
+.reservation-page .pill,
+.reservation-page .selected-dates,
+.reservation-page .calendar-day:not(.booked) {
+  color: #071d3a;
+  background: #f5efe4;
+}
+
+.reservation-page .calendar-day:not(.booked) {
+  border-color: #e2d7c7;
+}
+
+.reservation-page .calendar-day:not(.booked):hover {
+  border-color: #b8955b;
+  background: #efe1ca;
+}
+
+.reservation-page .calendar-day.selected-range,
+.reservation-page .legend-range {
+  border-color: #071d3a;
+  color: white;
+  background: #173a5e;
+}
+
+.reservation-page .legend-free {
+  border-color: #e2d7c7;
+  background: #f5efe4;
 }
 
 @media (max-width: 900px) {

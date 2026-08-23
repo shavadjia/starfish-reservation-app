@@ -48,6 +48,7 @@ const translations = {
     queenTwoSinglesSofa: "1 queen bed + 2 single beds + 1 sofa bed",
     queenSofa: "1 queen bed + 1 sofa bed",
     guests: "Guests",
+    fitsUpToGuests: "Fits up to {count} guests",
     minimum: "Minimum",
     nights: "nights",
     night: "night",
@@ -78,6 +79,7 @@ const translations = {
     noApartmentAvailable: "No available apartment for the chosen dates.",
     apartmentAvailable: "{apartment} is available for {count} nights. Please enter the guest details.",
     capacityError: "Maximum available capacity is 6 guests in Apartment 5, not counting infants.",
+    atLeastOneGuest: "Please select at least 1 adult or child.",
     showingCategories: "Showing apartment categories for {guests}{infants}. Each category is shown in a different rectangle.",
     guestCount: "{count} guest",
     guestCountPlural: "{count} guests",
@@ -141,6 +143,7 @@ const translations = {
     queenTwoSinglesSofa: "1 διπλό κρεβάτι + 2 μονά κρεβάτια + 1 καναπές-κρεβάτι",
     queenSofa: "1 διπλό κρεβάτι + 1 καναπές-κρεβάτι",
     guests: "Άτομα",
+    fitsUpToGuests: "Χωράει έως {count} επισκέπτες",
     minimum: "Ελάχιστο",
     nights: "νύχτες",
     night: "νύχτα",
@@ -171,6 +174,7 @@ const translations = {
     noApartmentAvailable: "Δεν υπάρχει διαθέσιμο διαμέρισμα για τις επιλεγμένες ημερομηνίες.",
     apartmentAvailable: "Το {apartment} είναι διαθέσιμο για {count} νύχτες. Συμπληρώστε τα στοιχεία επισκέπτη.",
     capacityError: "Η μέγιστη διαθέσιμη χωρητικότητα είναι 6 άτομα στο Διαμέρισμα 5, χωρίς τα βρέφη.",
+    atLeastOneGuest: "Παρακαλώ επιλέξτε τουλάχιστον 1 ενήλικα ή παιδί.",
     showingCategories: "Εμφανίζονται κατηγορίες διαμερισμάτων για {guests}{infants}. Κάθε κατηγορία εμφανίζεται σε ξεχωριστό πλαίσιο.",
     guestCount: "{count} άτομο",
     guestCountPlural: "{count} άτομα",
@@ -546,6 +550,7 @@ function renderApartmentCard(apartment) {
       </div>
       <h3>${name}</h3>
       <p>${t(apartment.bedsKey)}</p>
+      <p class="apartment-capacity">${tr("fitsUpToGuests", { count: apartment.guests })}</p>
       <div class="meta">
         <span class="pill">${type}</span>
         <span class="pill">${t("guests")}: ${apartment.guests}</span>
@@ -870,6 +875,12 @@ guestStepForm.addEventListener("submit", (event) => {
   const totalGuests = adults + children;
 
   guestStepMessage.classList.remove("error");
+
+  if (totalGuests < 1) {
+    guestStepMessage.textContent = t("atLeastOneGuest");
+    guestStepMessage.classList.add("error");
+    return;
+  }
 
   if (totalGuests > 6) {
     guestStepMessage.textContent = t("capacityError");
