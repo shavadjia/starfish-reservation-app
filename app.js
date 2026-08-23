@@ -194,7 +194,9 @@ let currentLanguage = "en";
 let syncedCalendarBlocks = [];
 let nightlyRates = new Map();
 let pricingReady = false;
+let calendarHealthReady = false;
 let reservationsEnabled = false;
+const safetyRecheckMs = 5 * 60 * 1000;
 
 function t(key) {
   return translations[currentLanguage][key] || translations.en[key] || key;
@@ -367,10 +369,16 @@ function directStayTotal(apartmentId, checkIn, checkOut) {
   return Number(total.toFixed(2));
 }
 
-function goToUnderConstruction() {
+function goToUnderConstruction(reason = "safety") {
   const target = new URL("./", window.location.href);
-  target.searchParams.set("maintenance", "pricing");
+  target.searchParams.set("maintenance", reason);
   window.location.replace(target.href);
+}
+
+function revealReservationIfSafe() {
+  if (pricingReady && calendarHealthReady) {
+    document.body.classList.remove("pricing-check");
+  }
 }
 
 async function loadNightlyRates() {
@@ -405,7 +413,7 @@ async function loadNightlyRates() {
         confirmationButton.disabled = true;
         confirmationButton.textContent = t("reservationsOpeningSoon");
       }
-      document.body.classList.remove("pricing-check");
+      revealReservationIfSafe();
       renderCalendar();
       return true;
     } catch {
@@ -418,26 +426,45 @@ async function loadNightlyRates() {
 }
 
 async function loadExternalCalendarBlocks() {
-  const githubDataUrl = "https://raw.githubusercontent.com/shavadjia/starfish-reservation-app/main/data/external-availability.json";
-  const urls = ["./data/external-availability.json", githubDataUrl];
+  const secureAvailabilitySource = "https://starfish-apartments-ayia-napa.s-havadjia.chatgpt.site/data/external-availability.json";
+  const urls = [secureAvailabilitySource];
 
   for (const url of urls) {
     try {
       const response = await fetch(`${url}?v=${Date.now()}`, { cache: "no-store" });
       if (!response.ok) continue;
       const data = await response.json();
-      const blocks = Array.isArray(data) ? data : data.blocks;
+      const blocks = data?.blocks;
       if (!Array.isArray(blocks)) continue;
+      const updatedAt = Date.parse(data.updatedAt || data.syncedAt);
+      const upstreamSyncedAt = Date.parse(data.upstreamSyncedAt || data.syncedAt);
+      const fresh = Number.isFinite(updatedAt) && Date.now() - updatedAt < 45 * 60 * 1000;
+      const upstreamFresh = Number.isFinite(upstreamSyncedAt) && Date.now() - upstreamSyncedAt < 45 * 60 * 1000;
+      const health = data.calendarHealth || data.health;
+      const healthy = data.status === "ready"
+        && fresh
+        && upstreamFresh
+        && health?.status === "healthy"
+        && health?.totalCalendars === 24
+        && health?.connectedCalendars === 24
+        && Array.isArray(health.criticalProblems)
+        && health.criticalProblems.length === 0;
+      if (!healthy) continue;
       syncedCalendarBlocks = blocks.filter((block) => {
         return Number.isInteger(block.apartmentId) && block.checkIn && block.checkOut;
       });
+      calendarHealthReady = true;
+      revealReservationIfSafe();
       renderApartments();
       renderCalendar();
-      return;
+      return true;
     } catch {
       // Try the next published availability source.
     }
   }
+
+  goToUnderConstruction("calendar");
+  return false;
 }
 
 function saveReservations(reservations) {
@@ -944,5 +971,7 @@ document.querySelectorAll(".language-button").forEach((button) => {
 
 renderApartments();
 applyLanguage("en");
-loadExternalCalendarBlocks();
-loadNightlyRates();
+Promise.all([loadExternalCalendarBlocks(), loadNightlyRates()]);
+setInterval(() => {
+  Promise.all([loadExternalCalendarBlocks(), loadNightlyRates()]);
+}, safetyRecheckMs);

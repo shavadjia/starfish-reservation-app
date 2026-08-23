@@ -69,7 +69,7 @@ function dedupe(blocks) {
   });
 }
 
-let previous = { blocks: [] };
+let previous = { blocks: [], status: "maintenance", calendarHealth: null };
 try {
   previous = JSON.parse(await readFile(outputPath, "utf8"));
 } catch {
@@ -102,6 +102,8 @@ if (!upstreamUrl && feeds.length === 0) {
 const blocks = [];
 const errors = [];
 let upstreamSyncedAt = null;
+let calendarHealth = null;
+let upstreamStatus = upstreamUrl ? "maintenance" : "not-configured";
 
 if (upstreamUrl) {
   try {
@@ -109,11 +111,15 @@ if (upstreamUrl) {
       headers: { "user-agent": "Starfish-Apartments-GitHub-Mirror/1.0" },
       signal: AbortSignal.timeout(30_000),
     });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
     const payload = await response.json();
     if (!Array.isArray(payload.blocks)) {
       throw new Error("The upstream response has no availability blocks");
+    }
+    calendarHealth = payload.health || null;
+    if (!response.ok || payload.status !== "ready" || calendarHealth?.status !== "healthy") {
+      const error = new Error(`Calendar audit failed (HTTP ${response.status})`);
+      error.calendarPayload = payload;
+      throw error;
     }
 
     blocks.push(...payload.blocks.map((block) => ({
@@ -123,8 +129,25 @@ if (upstreamUrl) {
       source: block.source || "booking",
     })));
     upstreamSyncedAt = payload.syncedAt || payload.updatedAt || null;
+    upstreamStatus = "ready";
     console.log(`Mirrored ${payload.blocks.length} privacy-safe availability blocks.`);
   } catch (error) {
+    const failedPayload = error?.calendarPayload;
+    if (failedPayload?.health) calendarHealth = failedPayload.health;
+    if (!calendarHealth) {
+      const previousHealth = previous.calendarHealth || previous.health || null;
+      calendarHealth = {
+        status: "critical",
+        checkedAt: new Date().toISOString(),
+        totalCalendars: previousHealth?.totalCalendars || 24,
+        connectedCalendars: previousHealth?.connectedCalendars || 0,
+        criticalProblems: [
+          ...(previousHealth?.criticalProblems || []),
+          { code: "availability-upstream-unreachable" },
+        ],
+        warnings: previousHealth?.warnings || [],
+      };
+    }
     errors.push({
       platform: "upstream",
       message: error instanceof Error ? error.message : String(error),
@@ -156,12 +179,21 @@ for (const feed of feeds) {
   }
 }
 
+const healthy = upstreamStatus === "ready"
+  && errors.length === 0
+  && calendarHealth?.status === "healthy"
+  && calendarHealth?.totalCalendars === 24
+  && calendarHealth?.connectedCalendars === 24;
+
 await writeFile(
   outputPath,
   `${JSON.stringify({
+    status: healthy ? "ready" : "maintenance",
     updatedAt: new Date().toISOString(),
     upstreamSyncedAt,
     configuredFeeds: feeds.length + (upstreamUrl ? 1 : 0),
+    expectedCalendars: 24,
+    calendarHealth,
     errors,
     blocks: dedupe(blocks),
   }, null, 2)}\n`,
