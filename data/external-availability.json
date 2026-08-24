@@ -1,12 +1,12 @@
 {
   "status": "ready",
-  "updatedAt": "2026-08-23T23:58:45.508Z",
-  "upstreamSyncedAt": "2026-08-23T23:58:45.484Z",
+  "updatedAt": "2026-08-24T01:52:38.841Z",
+  "upstreamSyncedAt": "2026-08-24T01:52:38.818Z",
   "configuredFeeds": 1,
   "expectedCalendars": 24,
   "calendarHealth": {
     "status": "healthy",
-    "checkedAt": "2026-08-23T23:58:45.484Z",
+    "checkedAt": "2026-08-24T01:52:38.818Z",
     "totalCalendars": 24,
     "connectedCalendars": 24,
     "criticalProblems": [],
@@ -662,7 +662,7 @@
     },
     {
       "apartmentId": 10,
-      "checkIn": "2026-08-21",
+      "checkIn": "2026-08-22",
       "checkOut": "2026-08-25",
       "source": "airbnb"
     },
@@ -695,6 +695,12 @@
       "checkIn": "2027-08-09",
       "checkOut": "2027-08-16",
       "source": "booking"
+    },
+    {
+      "apartmentId": 10,
+      "checkIn": "2027-08-24",
+      "checkOut": "2027-08-25",
+      "source": "airbnb"
     },
     {
       "apartmentId": 11,
@@ -761,6 +767,12 @@
       "checkIn": "2027-08-11",
       "checkOut": "2027-08-18",
       "source": "booking"
+    },
+    {
+      "apartmentId": 11,
+      "checkIn": "2027-08-24",
+      "checkOut": "2027-08-25",
+      "source": "airbnb"
     },
     {
       "apartmentId": 12,
