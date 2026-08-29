@@ -1,12 +1,12 @@
 {
   "status": "ready",
-  "updatedAt": "2026-08-29T21:18:00.104Z",
-  "upstreamSyncedAt": "2026-08-29T21:18:00.074Z",
+  "updatedAt": "2026-08-29T23:32:55.435Z",
+  "upstreamSyncedAt": "2026-08-29T23:32:55.403Z",
   "configuredFeeds": 1,
   "expectedCalendars": 24,
   "calendarHealth": {
     "status": "healthy",
-    "checkedAt": "2026-08-29T21:18:00.074Z",
+    "checkedAt": "2026-08-29T23:32:55.403Z",
     "totalCalendars": 24,
     "connectedCalendars": 24,
     "criticalProblems": [],
@@ -54,12 +54,6 @@
   },
   "errors": [],
   "blocks": [
-    {
-      "apartmentId": 1,
-      "checkIn": "2026-08-23",
-      "checkOut": "2026-08-29",
-      "source": "booking"
-    },
     {
       "apartmentId": 1,
       "checkIn": "2026-08-29",
@@ -422,12 +416,6 @@
     },
     {
       "apartmentId": 6,
-      "checkIn": "2026-08-25",
-      "checkOut": "2026-08-29",
-      "source": "booking"
-    },
-    {
-      "apartmentId": 6,
       "checkIn": "2026-09-07",
       "checkOut": "2026-09-20",
       "source": "booking"
@@ -688,12 +676,6 @@
       "apartmentId": 11,
       "checkIn": "2027-08-11",
       "checkOut": "2027-08-18",
-      "source": "booking"
-    },
-    {
-      "apartmentId": 12,
-      "checkIn": "2026-08-18",
-      "checkOut": "2026-08-29",
       "source": "booking"
     },
     {
