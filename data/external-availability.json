@@ -1,12 +1,12 @@
 {
   "status": "ready",
-  "updatedAt": "2026-08-30T20:05:32.744Z",
-  "upstreamSyncedAt": "2026-08-30T20:05:32.711Z",
+  "updatedAt": "2026-08-30T22:46:29.394Z",
+  "upstreamSyncedAt": "2026-08-30T22:46:29.365Z",
   "configuredFeeds": 1,
   "expectedCalendars": 24,
   "calendarHealth": {
     "status": "healthy",
-    "checkedAt": "2026-08-30T20:05:32.711Z",
+    "checkedAt": "2026-08-30T22:46:29.365Z",
     "totalCalendars": 24,
     "connectedCalendars": 24,
     "criticalProblems": [],
@@ -33,13 +33,6 @@
         "note": "This may be an imported block or a duplicate event; review it as a possible conflict."
       },
       {
-        "apartmentId": 8,
-        "platform": "booking",
-        "code": "same-platform-overlap",
-        "overlapCount": 1,
-        "note": "This may be an imported block or a duplicate event; review it as a possible conflict."
-      },
-      {
         "apartmentId": 1,
         "code": "cross-platform-overlap",
         "overlapCount": 1,
@@ -47,6 +40,12 @@
       },
       {
         "apartmentId": 7,
+        "code": "cross-platform-overlap",
+        "overlapCount": 1,
+        "note": "This can be normal when platforms import each other; it is reported for review."
+      },
+      {
+        "apartmentId": 8,
         "code": "cross-platform-overlap",
         "overlapCount": 1,
         "note": "This can be normal when platforms import each other; it is reported for review."
@@ -69,8 +68,8 @@
     },
     {
       "apartmentId": 1,
-      "checkIn": "2026-08-30",
-      "checkOut": "2026-08-31",
+      "checkIn": "2026-08-31",
+      "checkOut": "2026-09-01",
       "source": "airbnb"
     },
     {
@@ -459,15 +458,15 @@
     },
     {
       "apartmentId": 7,
-      "checkIn": "2026-08-30",
-      "checkOut": "2026-08-31",
-      "source": "airbnb"
+      "checkIn": "2026-08-31",
+      "checkOut": "2026-09-15",
+      "source": "booking"
     },
     {
       "apartmentId": 7,
       "checkIn": "2026-08-31",
-      "checkOut": "2026-09-15",
-      "source": "booking"
+      "checkOut": "2026-09-01",
+      "source": "airbnb"
     },
     {
       "apartmentId": 7,
@@ -489,21 +488,15 @@
     },
     {
       "apartmentId": 8,
-      "checkIn": "2026-08-27",
-      "checkOut": "2026-08-30",
+      "checkIn": "2026-08-31",
+      "checkOut": "2026-09-12",
       "source": "booking"
-    },
-    {
-      "apartmentId": 8,
-      "checkIn": "2026-08-30",
-      "checkOut": "2026-08-31",
-      "source": "airbnb"
     },
     {
       "apartmentId": 8,
       "checkIn": "2026-08-31",
-      "checkOut": "2026-09-12",
-      "source": "booking"
+      "checkOut": "2026-09-01",
+      "source": "airbnb"
     },
     {
       "apartmentId": 8,
@@ -604,7 +597,13 @@
     {
       "apartmentId": 10,
       "checkIn": "2026-08-28",
-      "checkOut": "2026-08-31",
+      "checkOut": "2026-08-30",
+      "source": "airbnb"
+    },
+    {
+      "apartmentId": 10,
+      "checkIn": "2026-08-31",
+      "checkOut": "2026-09-01",
       "source": "airbnb"
     },
     {
@@ -638,21 +637,9 @@
       "source": "booking"
     },
     {
-      "apartmentId": 10,
-      "checkIn": "2027-08-30",
-      "checkOut": "2027-08-31",
-      "source": "airbnb"
-    },
-    {
       "apartmentId": 11,
-      "checkIn": "2026-08-26",
-      "checkOut": "2026-08-30",
-      "source": "booking"
-    },
-    {
-      "apartmentId": 11,
-      "checkIn": "2026-08-30",
-      "checkOut": "2026-08-31",
+      "checkIn": "2026-08-31",
+      "checkOut": "2026-09-01",
       "source": "airbnb"
     },
     {
@@ -698,12 +685,6 @@
       "source": "booking"
     },
     {
-      "apartmentId": 11,
-      "checkIn": "2027-08-30",
-      "checkOut": "2027-08-31",
-      "source": "airbnb"
-    },
-    {
       "apartmentId": 12,
       "checkIn": "2026-08-29",
       "checkOut": "2026-09-05",
@@ -711,8 +692,8 @@
     },
     {
       "apartmentId": 12,
-      "checkIn": "2026-08-30",
-      "checkOut": "2026-08-31",
+      "checkIn": "2026-08-31",
+      "checkOut": "2026-09-01",
       "source": "airbnb"
     },
     {
