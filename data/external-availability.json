@@ -1,15 +1,19 @@
 {
-  "status": "ready",
-  "updatedAt": "2026-09-03T11:38:21.306Z",
-  "upstreamSyncedAt": "2026-09-03T11:38:21.057Z",
+  "status": "maintenance",
+  "updatedAt": "2026-09-03T15:13:18.361Z",
+  "upstreamSyncedAt": null,
   "configuredFeeds": 1,
   "expectedCalendars": 24,
   "calendarHealth": {
-    "status": "healthy",
-    "checkedAt": "2026-09-03T11:38:21.057Z",
+    "status": "critical",
+    "checkedAt": "2026-09-03T15:13:18.361Z",
     "totalCalendars": 24,
     "connectedCalendars": 24,
-    "criticalProblems": [],
+    "criticalProblems": [
+      {
+        "code": "availability-upstream-unreachable"
+      }
+    ],
     "warnings": [
       {
         "apartmentId": 1,
@@ -57,7 +61,12 @@
       }
     ]
   },
-  "errors": [],
+  "errors": [
+    {
+      "platform": "upstream",
+      "message": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON"
+    }
+  ],
   "blocks": [
     {
       "apartmentId": 1,
