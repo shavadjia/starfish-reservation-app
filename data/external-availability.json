@@ -1,12 +1,12 @@
 {
   "status": "ready",
-  "updatedAt": "2026-09-04T01:17:22.979Z",
-  "upstreamSyncedAt": "2026-09-04T01:17:22.953Z",
+  "updatedAt": "2026-09-04T06:25:51.147Z",
+  "upstreamSyncedAt": "2026-09-04T06:25:51.126Z",
   "configuredFeeds": 1,
   "expectedCalendars": 24,
   "calendarHealth": {
     "status": "healthy",
-    "checkedAt": "2026-09-04T01:17:22.953Z",
+    "checkedAt": "2026-09-04T06:25:51.126Z",
     "totalCalendars": 24,
     "connectedCalendars": 24,
     "criticalProblems": [],
@@ -273,6 +273,12 @@
       "apartmentId": 4,
       "checkIn": "2026-08-25",
       "checkOut": "2026-09-04",
+      "source": "booking"
+    },
+    {
+      "apartmentId": 4,
+      "checkIn": "2026-09-05",
+      "checkOut": "2026-09-08",
       "source": "booking"
     },
     {
