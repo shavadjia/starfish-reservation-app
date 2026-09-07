@@ -1,12 +1,12 @@
 {
   "status": "ready",
-  "updatedAt": "2026-09-07T04:54:26.533Z",
-  "upstreamSyncedAt": "2026-09-07T04:54:26.508Z",
+  "updatedAt": "2026-09-07T10:03:06.097Z",
+  "upstreamSyncedAt": "2026-09-07T10:03:06.038Z",
   "configuredFeeds": 1,
   "expectedCalendars": 24,
   "calendarHealth": {
     "status": "healthy",
-    "checkedAt": "2026-09-07T04:54:26.508Z",
+    "checkedAt": "2026-09-07T10:03:06.038Z",
     "totalCalendars": 24,
     "connectedCalendars": 24,
     "criticalProblems": [],
@@ -15,7 +15,7 @@
         "apartmentId": 1,
         "platform": "booking",
         "code": "same-platform-overlap",
-        "overlapCount": 1,
+        "overlapCount": 2,
         "note": "This may be an imported block or a duplicate event; review it as a possible conflict."
       },
       {
@@ -105,6 +105,12 @@
       "apartmentId": 1,
       "checkIn": "2027-07-18",
       "checkOut": "2027-07-25",
+      "source": "booking"
+    },
+    {
+      "apartmentId": 1,
+      "checkIn": "2027-08-01",
+      "checkOut": "2027-08-11",
       "source": "booking"
     },
     {
