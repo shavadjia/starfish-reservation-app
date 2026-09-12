@@ -1,15 +1,21 @@
 {
-  "status": "ready",
-  "updatedAt": "2026-09-12T18:47:31.898Z",
-  "upstreamSyncedAt": "2026-09-12T18:47:31.876Z",
+  "status": "maintenance",
+  "updatedAt": "2026-09-12T21:20:21.800Z",
+  "upstreamSyncedAt": null,
   "configuredFeeds": 1,
   "expectedCalendars": 24,
   "calendarHealth": {
-    "status": "healthy",
-    "checkedAt": "2026-09-12T18:47:31.876Z",
+    "status": "critical",
+    "checkedAt": "2026-09-12T21:20:21.783Z",
     "totalCalendars": 24,
-    "connectedCalendars": 24,
-    "criticalProblems": [],
+    "connectedCalendars": 23,
+    "criticalProblems": [
+      {
+        "apartmentId": 6,
+        "platform": "airbnb",
+        "code": "calendar-fetch-failed"
+      }
+    ],
     "warnings": [
       {
         "apartmentId": 1,
@@ -33,12 +39,6 @@
       },
       {
         "apartmentId": 7,
-        "code": "cross-platform-overlap",
-        "overlapCount": 1,
-        "note": "This can be normal when platforms import each other; it is reported for review."
-      },
-      {
-        "apartmentId": 8,
         "code": "cross-platform-overlap",
         "overlapCount": 1,
         "note": "This can be normal when platforms import each other; it is reported for review."
@@ -69,7 +69,12 @@
       }
     ]
   },
-  "errors": [],
+  "errors": [
+    {
+      "platform": "upstream",
+      "message": "Calendar audit failed (HTTP 503)"
+    }
+  ],
   "blocks": [
     {
       "apartmentId": 1,
