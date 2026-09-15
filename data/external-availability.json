@@ -1,12 +1,12 @@
 {
   "status": "ready",
-  "updatedAt": "2026-09-15T11:47:54.822Z",
-  "upstreamSyncedAt": "2026-09-15T11:47:54.796Z",
+  "updatedAt": "2026-09-15T16:42:56.135Z",
+  "upstreamSyncedAt": "2026-09-15T16:42:56.112Z",
   "configuredFeeds": 1,
   "expectedCalendars": 24,
   "calendarHealth": {
     "status": "healthy",
-    "checkedAt": "2026-09-15T11:47:54.796Z",
+    "checkedAt": "2026-09-15T16:42:56.112Z",
     "totalCalendars": 24,
     "connectedCalendars": 24,
     "criticalProblems": [],
