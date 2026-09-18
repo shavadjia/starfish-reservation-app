@@ -1,106 +1,15 @@
 {
-  "status": "maintenance",
-  "updatedAt": "2026-09-18T09:49:01.506Z",
-  "upstreamSyncedAt": null,
+  "status": "ready",
+  "updatedAt": "2026-09-18T14:17:23.038Z",
+  "upstreamSyncedAt": "2026-09-18T14:17:23.013Z",
   "configuredFeeds": 1,
   "expectedCalendars": 24,
   "calendarHealth": {
-    "status": "critical",
-    "checkedAt": "2026-09-18T09:49:01.488Z",
+    "status": "healthy",
+    "checkedAt": "2026-09-18T14:17:23.013Z",
     "totalCalendars": 24,
-    "connectedCalendars": 6,
-    "criticalProblems": [
-      {
-        "apartmentId": 1,
-        "platform": "airbnb",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 2,
-        "platform": "airbnb",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 3,
-        "platform": "airbnb",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 4,
-        "platform": "airbnb",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 5,
-        "platform": "airbnb",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 6,
-        "platform": "airbnb",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 7,
-        "platform": "booking",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 7,
-        "platform": "airbnb",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 8,
-        "platform": "booking",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 8,
-        "platform": "airbnb",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 9,
-        "platform": "booking",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 9,
-        "platform": "airbnb",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 10,
-        "platform": "booking",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 10,
-        "platform": "airbnb",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 11,
-        "platform": "booking",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 11,
-        "platform": "airbnb",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 12,
-        "platform": "booking",
-        "code": "calendar-fetch-failed"
-      },
-      {
-        "apartmentId": 12,
-        "platform": "airbnb",
-        "code": "calendar-fetch-failed"
-      }
-    ],
+    "connectedCalendars": 24,
+    "criticalProblems": [],
     "warnings": [
       {
         "apartmentId": 1,
@@ -115,15 +24,46 @@
         "code": "same-platform-overlap",
         "overlapCount": 1,
         "note": "This may be an imported block or a duplicate event; review it as a possible conflict."
+      },
+      {
+        "apartmentId": 1,
+        "code": "cross-platform-overlap",
+        "overlapCount": 1,
+        "note": "This can be normal when platforms import each other; it is reported for review."
+      },
+      {
+        "apartmentId": 7,
+        "code": "cross-platform-overlap",
+        "overlapCount": 1,
+        "note": "This can be normal when platforms import each other; it is reported for review."
+      },
+      {
+        "apartmentId": 8,
+        "code": "cross-platform-overlap",
+        "overlapCount": 1,
+        "note": "This can be normal when platforms import each other; it is reported for review."
+      },
+      {
+        "apartmentId": 10,
+        "code": "cross-platform-overlap",
+        "overlapCount": 1,
+        "note": "This can be normal when platforms import each other; it is reported for review."
+      },
+      {
+        "apartmentId": 11,
+        "code": "cross-platform-overlap",
+        "overlapCount": 1,
+        "note": "This can be normal when platforms import each other; it is reported for review."
+      },
+      {
+        "apartmentId": 12,
+        "code": "cross-platform-overlap",
+        "overlapCount": 1,
+        "note": "This can be normal when platforms import each other; it is reported for review."
       }
     ]
   },
-  "errors": [
-    {
-      "platform": "upstream",
-      "message": "Calendar audit failed (HTTP 503)"
-    }
-  ],
+  "errors": [],
   "blocks": [
     {
       "apartmentId": 1,
