@@ -1,15 +1,22 @@
 {
-  "status": "ready",
-  "updatedAt": "2026-09-22T21:22:03.261Z",
-  "upstreamSyncedAt": "2026-09-22T21:22:03.230Z",
+  "status": "maintenance",
+  "updatedAt": "2026-09-22T23:44:27.606Z",
+  "upstreamSyncedAt": null,
   "configuredFeeds": 1,
   "expectedCalendars": 24,
   "calendarHealth": {
-    "status": "healthy",
-    "checkedAt": "2026-09-22T21:22:03.230Z",
+    "status": "critical",
+    "checkedAt": "2026-09-22T23:44:27.591Z",
     "totalCalendars": 24,
-    "connectedCalendars": 24,
-    "criticalProblems": [],
+    "connectedCalendars": 23,
+    "criticalProblems": [
+      {
+        "apartmentId": 12,
+        "platform": "booking",
+        "code": "calendar-http-error",
+        "httpStatus": 500
+      }
+    ],
     "warnings": [
       {
         "apartmentId": 1,
@@ -54,16 +61,15 @@
         "code": "cross-platform-overlap",
         "overlapCount": 1,
         "note": "This can be normal when platforms import each other; it is reported for review."
-      },
-      {
-        "apartmentId": 12,
-        "code": "cross-platform-overlap",
-        "overlapCount": 1,
-        "note": "This can be normal when platforms import each other; it is reported for review."
       }
     ]
   },
-  "errors": [],
+  "errors": [
+    {
+      "platform": "upstream",
+      "message": "Calendar audit failed (HTTP 503)"
+    }
+  ],
   "blocks": [
     {
       "apartmentId": 1,
