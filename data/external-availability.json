@@ -1,12 +1,13 @@
 {
   "status": "ready",
-  "updatedAt": "2026-10-03T13:39:44.857Z",
-  "upstreamSyncedAt": "2026-10-03T13:39:44.831Z",
+  "updatedAt": "2026-10-03T17:37:59.333Z",
+  "upstreamSyncedAt": "2026-10-03T17:37:59.104Z",
   "configuredFeeds": 1,
   "expectedCalendars": 24,
   "calendarHealth": {
     "status": "healthy",
-    "checkedAt": "2026-10-03T13:39:44.831Z",
+    "checkedAt": "2026-10-03T17:37:59.104Z",
+    "refreshSeconds": 60,
     "totalCalendars": 24,
     "connectedCalendars": 24,
     "criticalProblems": [],
@@ -16,33 +17,33 @@
         "platform": "booking",
         "code": "same-platform-overlap",
         "overlapCount": 1,
-        "note": "This may be an imported block or a duplicate event; review it as a possible conflict."
+        "note": "Possible imported block or duplicate event."
       },
       {
         "apartmentId": 2,
         "platform": "booking",
         "code": "same-platform-overlap",
         "overlapCount": 1,
-        "note": "This may be an imported block or a duplicate event; review it as a possible conflict."
+        "note": "Possible imported block or duplicate event."
       },
       {
         "apartmentId": 3,
         "platform": "booking",
         "code": "same-platform-overlap",
         "overlapCount": 1,
-        "note": "This may be an imported block or a duplicate event; review it as a possible conflict."
+        "note": "Possible imported block or duplicate event."
       },
       {
         "apartmentId": 7,
         "code": "cross-platform-overlap",
         "overlapCount": 1,
-        "note": "This can be normal when platforms import each other; it is reported for review."
+        "note": "Normal when channels import each other; retained for audit."
       },
       {
         "apartmentId": 10,
         "code": "cross-platform-overlap",
         "overlapCount": 1,
-        "note": "This can be normal when platforms import each other; it is reported for review."
+        "note": "Normal when channels import each other; retained for audit."
       }
     ]
   },
