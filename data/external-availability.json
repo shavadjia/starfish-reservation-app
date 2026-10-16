@@ -1,16 +1,22 @@
 {
-  "status": "ready",
-  "updatedAt": "2026-10-16T10:08:25.901Z",
-  "upstreamSyncedAt": "2026-10-16T10:08:25.506Z",
+  "status": "maintenance",
+  "updatedAt": "2026-10-16T14:53:36.499Z",
+  "upstreamSyncedAt": null,
   "configuredFeeds": 1,
   "expectedCalendars": 24,
   "calendarHealth": {
-    "status": "healthy",
-    "checkedAt": "2026-10-16T10:08:25.506Z",
+    "status": "critical",
+    "checkedAt": "2026-10-16T14:53:36.051Z",
     "refreshSeconds": 60,
     "totalCalendars": 24,
-    "connectedCalendars": 24,
-    "criticalProblems": [],
+    "connectedCalendars": 23,
+    "criticalProblems": [
+      {
+        "apartmentId": 2,
+        "platform": "airbnb",
+        "code": "calendar-fetch-failed"
+      }
+    ],
     "warnings": [
       {
         "apartmentId": 1,
@@ -41,7 +47,12 @@
       }
     ]
   },
-  "errors": [],
+  "errors": [
+    {
+      "platform": "upstream",
+      "message": "Calendar audit failed (HTTP 503)"
+    }
+  ],
   "blocks": [
     {
       "apartmentId": 1,
