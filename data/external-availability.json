@@ -1,12 +1,12 @@
 {
   "status": "ready",
-  "updatedAt": "2026-10-20T10:20:07.101Z",
-  "upstreamSyncedAt": "2026-10-20T10:20:06.492Z",
+  "updatedAt": "2026-10-20T15:18:52.570Z",
+  "upstreamSyncedAt": "2026-10-20T15:18:52.142Z",
   "configuredFeeds": 1,
   "expectedCalendars": 24,
   "calendarHealth": {
     "status": "healthy",
-    "checkedAt": "2026-10-20T10:20:06.492Z",
+    "checkedAt": "2026-10-20T15:18:52.142Z",
     "refreshSeconds": 60,
     "totalCalendars": 24,
     "connectedCalendars": 24,
@@ -14,13 +14,6 @@
     "warnings": [
       {
         "apartmentId": 1,
-        "platform": "booking",
-        "code": "same-platform-overlap",
-        "overlapCount": 1,
-        "note": "Possible imported block or duplicate event."
-      },
-      {
-        "apartmentId": 3,
         "platform": "booking",
         "code": "same-platform-overlap",
         "overlapCount": 1,
@@ -165,12 +158,6 @@
     {
       "apartmentId": 3,
       "checkIn": "2027-08-09",
-      "checkOut": "2027-08-16",
-      "source": "booking"
-    },
-    {
-      "apartmentId": 3,
-      "checkIn": "2027-08-13",
       "checkOut": "2027-08-16",
       "source": "booking"
     },
